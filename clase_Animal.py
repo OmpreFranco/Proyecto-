@@ -12,7 +12,7 @@ import math as mat
 # definimos la clase animal
 #==============================================================================
 class Animal():
-    
+    # Atributos de la clase animal 
     def __init__(self,radio,  vel,  life,  agresividad):
 		self.position_x = 0
 		self.position_y = 0
@@ -22,14 +22,27 @@ class Animal():
 		self.objetivo = 0
 		self.type = TypeOfAnimal(agresividad)
  
-
-    def setPosition(pos):
+    # Metodo de clase para establecer la posicion 
+    def setPosition(self ,pos):
         self.position = pos
-        
+    # Metodo para obtener la nueva posicion         
     def getPosition(self):
-        return position 
+        return position # aca position no esta bien definido, de donde la obtengo ?
+    #  Metodo para hacer que el animal camine y sense su entorno    
+    def scout(self,agentes,cant): # Agentes seria la lista de animales en el ambiente
+                        # no entiendo que seria lo que se implemento en c++ de Animal *animalsArray[], int cant que es cant?
+        min_Distance = 9999 # Aca calramente , o no , deberia ser un numero menor esta puesto al azar creo CHEQUEAR !
+        obj = agentes * 0 # Creo que aca crea una lista de ceros pero del mismo tamano que agentes
+                            #Ver bien si agentes es la animalArray
+        while i<cant:
+            if ()       #No entiendo como es la estrucutura de este if ni cuales son las variables 
+#==============================================================================
+# A partir de aca voy a tratar de crear yo [Franco] los metodos de la clase viendo de tomar como guia lo que hizo cristina
+# No entiendo muy bien la sintaxis de C++ es la primera vez que la veo [Franco]
+#==============================================================================
         
-    def
+    
+    
 #void Animal::setPosition(Position pos){
 #	this->position = pos;
 #}
