@@ -18,8 +18,16 @@ class Ambiente(x_max,y_max,Animales_list):
         self.x_max = x_max # Definimos el tamaño de x(todavia no esta decidido si sera un array de np.)
         self.y_max = y_max # Definimos el tamaño de y(todavia no esta decidido si sera un array de np.)
         # Falta de finir los otros atributos
-        
-        
+
+#==============================================================================
+# Creamos la clase animales        
+#==============================================================================
 class Animales():
-    def __
+    def __init__(x,y,velocidad,tipo_animal,distancia):
         
+#Neesitamos crear los atributos y variables de clase        
+#==============================================================================
+# Creamos los metodos 
+#==============================================================================
+    def metodo_():
+        pass
