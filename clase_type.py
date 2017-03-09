@@ -19,7 +19,7 @@ class TypeOfAnimal(object):
 	self.agresividad = agresividad
 
 # Este metodo permite construir un tipo de animal de acuerdo al nivel de 
-# agresividad del mismo encapsulando la logica de creación al usuario.
+# agresividad del mismo encapsulando la logica de creacion al usuario.
 # La agresividad esta pensada en un rango [0.1].
 
     def getType(self,agresividad):
@@ -33,8 +33,8 @@ class TypeOfAnimal(object):
 
 
 class Hunter(TypeOfAnimal):
-    def __init__(self,agresividad):
-        super(TypeOfAnimal, self).__init__(agresividad)
+    def __init__(self, agresividad):
+        super(Hunter, self).__init__(agresividad)
 
 #Defino en metodo actuar-->cazar
     def actuar(self,animal_h,animal_v):
@@ -50,7 +50,7 @@ class Hunter(TypeOfAnimal):
 class Victim(TypeOfAnimal):
 
     def __init__(self,agresividad):
-        super(TypeOfAnimal, self).__init__(agresividad)
+        super(Victim, self).__init__(agresividad)
 
 #Defino en metodo actuar-->huir o quedarse
     def actuar(self,animal_h,animal_v):

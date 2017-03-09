@@ -47,39 +47,32 @@ class Ambiente(object):
             self.agents=[]
             if number_of_agents is None:
                 self.number_of_agents=10
-            self.add_agents(self)
+            self.add_agents()
             
     def time_step(self):
         """
         Este metodo adelanta la simulacion un paso llamando a :func:'self.detect_targets', 
         :func:'self.move_agents', :func:'self.update'
         """
-        self.detect_targets()
-        self.move_agents()
+        self.detect_targets_and_move()
         self.update()
 
-    def detect_targets(self):
+    def detect_targets_and_move(self):
         """
         Este método llama a :func:'scout' de la clase Animal para cada agente de la lista.
         """
         for agent in self.agents:
-            agent.scout(self.agents)
-
-    def move_agents(self):
-        """
-        Este método llama a :func:'move' de la clase Animal para cada agente de la lista.
-        """
-        for agent in self.agents:
-            agent.move()
+            objetivo = agent.scout(self.agents)
+            agent.move(objetivo)
 
     def update(self):
         """
         Este método busca todos los agentes cuya vida es igual a 0 y los elimina de la lista de agentes.
         """
-        while agent.life == 0 in self.agents: self.agents.remove(agent)
-        #for agent in self.agents:
-        #    if (agent.life == 0):
-        #        self.agents.remove(agent)
+#        while agent.life == 0 in self.agents: self.agents.remove(agent)
+        for agent in self.agents:
+            if (agent.life == 0):
+                self.agents.remove(agent)
 
     def add_agents(self):
         """ 
@@ -93,9 +86,9 @@ class Ambiente(object):
         camina mas distancia de la que ve.
         """
         for i in range(self.number_of_agents):
-                radio_vision=np.random()+0.01
-                position=[np.random()*self.lim[0],np.random()*self.lim[1]]
-                vel=np.random()*radio_vision+0.01
+                radio_vision=np.random.random(1)+0.01
+                position=[np.random.random(1)*self.lim[0],np.random.random(1)*self.lim[1]]
+                vel=np.random.random(1)*radio_vision+0.01
                 life=1.0
                 agresividad=np.random.randint(0,2)
                 agent=clase_Animal.Animal(radio_vision, position , vel,  life,  agresividad)
