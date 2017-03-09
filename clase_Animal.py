@@ -22,23 +22,52 @@ class Animal():
 		self.perceptionRadio = radio_vision
 		self.velocity = vel
 		self.life = life
-#		self.objetivo = 0 # Creo que no deberia ir en el contructor eso. no es un atributo 
-		self.type = tipo.TypeOfAnimal(agresividad) # Llamo al metodo de la clase TypeOfAnimal que me devuelve el tipo de animal que es. seguramente-
+		self.agresividad = agresividad
+  		self.type = tipo.TypeOfAnimal(agresividad) # Llamo al metodo de la clase TypeOfAnimal que me devuelve el tipo de animal que es. seguramente-
                                                       # -se llame de algun modo distinto
 
     # Metodo de clase para establecer la posicion 
-    def setPosition(self ,position):
-        self.position = position
-    # Metodo para obtener la nueva posicion         
-    def caminar(self, position,vel):
-        position[1] = position[1] + np.cos(np.random.random(1)*2*np.pi)*vel 
-        position[2] = position[2] + np.sin(np.random.random(1)*2*np.pi)*vel 
+    def return_Position(self):
+#        self.position = position
+        return self.position
+    # Metodo para obtener la nueva posicion                 
+    def move(self,objetivo):
+        #Creo un modo de que el animal vaya a la posicion de su objetivo si su agresividad es mayor        
+        if objetivo != None and self.agresividad != objetivo.agresividad:
+            #calculo la distancia entre el objetivo y el cazador 
+            delta_x = objetivo.position[0]-self.position[0]
+            delta_y = objetivo.position[1]-self.position[1]
+            distancia = np.sqrt((delta_x)**2 + (delta_y)**2)
 
-#        return position # aca position no esta bien definido, de donde la obtengo ?
-        
-        
+            if distancia > self.velocity:
+                #defino el versor donde apunta la direccion que une ambos objetos
+                r_versor = [delta_x,delta_y ] / distancia
+                self.position = self.position + r_versor * self.velocity 
+                print "alla voy"
+            else:    
+                self.position = objetivo.position 
+                print"vas a morir moe wiii"
+        #Creo un modo de que el animal camine aleatoriamente
+        else:
+            print "nada por aqui"
+            a = np.random.random(1)*2*np.pi # Genero el angulo aleatorio 
+            self.position[0] = self.position[0] + np.cos(a)*self.velocity # Marco el cambio de posicion en X e Y 
+            self.position[1] = self.position[1] + np.sin(a)*self.velocity
+
+                
     #  Metodo para hacer que el animal sense su entorno    
     def scout(self,agentes): # Agentes seria la lista de animales en el ambiente
+        objetivo = None    
+        for i in agents:
+            pos_agent = i.return_Postion()
+            distancia = np.sqrt((pos_agent[0]-self.position[0])**2 + (pos_agent[1]-self.position[1])**2)
+            if distancia < self.perceptionRadio and distancia != 0:
+                objetivo = i 
+                print "detecte algo"        #Tenemos que ver que hace cuando detecto algo 
+            # Aca mi animal no detecta nada     
+        
+                 
+            
       
                         
             
