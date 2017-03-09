@@ -40,10 +40,6 @@ lifeG=5
 agrL=10
 agrG=0 
 
-#Creo un animal de cada tipo
-leon = Animal(radioL, velL, lifeL, agrL) 
-gacela = Animal(radioG, velG, lifeG, agrG) 
-
 #Genero posiciones aleatorias x, y
 posL_x = np.random.random(1) * (xMax +1)  
 posL_y = np.random.random(1) * (yMax +1) 
@@ -51,6 +47,12 @@ posG_x = np.random.random(1) * (xMax +1)
 posG_y = np.random.random(1) * (yMax +1) 
 posL = [posL_x , posL_y] 
 posG = [posG_x , posG_y] 
+
+#Creo un animal de cada tipo
+leon = Animal(radioL,posL ,velL, lifeL, agrL) 
+gacela = Animal(radioG, posL,velG, lifeG, agrG) 
+
+
 
 #Agrego los animales al ambiente
 # estoy llamando al metodo agregar animal de la clase ambiente 
