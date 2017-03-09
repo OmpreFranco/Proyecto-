@@ -1,16 +1,4 @@
-"""
-/*
- * TypeOfAnimal.cpp
- *
- *  Created on: 7/3/2017
- *  Author: Cristina Werenitzky
- */
 
-#include <iostream>
-#include "TypeOfAnimal.h"
-using namespace std;
-
-"""
 #Definicion de clase TypeOfAnimal
 
 class TypeOfAnimal(object):

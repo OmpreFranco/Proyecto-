@@ -1,12 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Mar  8 16:24:37 2017
 
-@author: franco
-"""
-#==============================================================================
-# 
-#==============================================================================
 import numpy as np 
 #from matplotlib import  pyplot as plt
 #import math as mat

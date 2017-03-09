@@ -1,23 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Mar  8 15:32:41 2017
 
-@author: leandro
-
-
-/*
- * Ambiente.cpp
- *
- *  Created on: 7/3/2017
- *  Author: Cristina Werenitzky
- */
- 
-#include "Ambiente.h"
-#include "TypeOfAnimal.h"
-#include <iostream>
-using namespace std;
-
- """
 import clase_Animal
 import numpy as np
 

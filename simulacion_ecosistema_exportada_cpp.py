@@ -1,13 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Mar  8 15:15:11 2017
 
-@author: franco
-"""
-#==============================================================================
-# 
-#==============================================================================
-#----------------------------------------------
 import numpy as np 
 from matplotlib import  pyplot as plt
 import math as mat
@@ -32,7 +23,7 @@ yMax=15
 # Impongo el limite del ambiente
 limite = [xMax, yMax]
 # Creo el objeto ecosistema de la clase ambiente 
-ecosistema = landscape.Ambiente(limite,100) 
+ecosistema = landscape.Ambiente(limite,30) 
 
 ##Defino parametros de mis animales
 #radioL=3
