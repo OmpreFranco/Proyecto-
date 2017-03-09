@@ -23,9 +23,14 @@ using namespace std;
  """
  
 class.Ambiente(object):
-    def __init__(self,lim):
+    def __init__(self,lim,agents=None,number_of_agents=None):
         self.lim=lim
-        self.agents=agents
+        if agents is None:
+            if number_of_agents is None:
+                number_of_agents=10
+            for i in range(number_of_agents):
+                self.agents=[]
+
          
 Ambiente::Ambiente(Position lim){
 	indice=0;
@@ -41,7 +46,7 @@ void Ambiente::timeStep(){
 	graficar();
 }
 """
-    def.time_step(self):
+    def time_step(self):
         self.detect_targets()
         self.move_agents()
         self.update()
@@ -53,7 +58,7 @@ void Ambiente::detectarObjetivo(){
 	}
 }
 """
-    def.detect_targets(self,self.agents):
+    def detect_targets(self,self.agents):
         for agent in self.agents:
             agent.scout(self.agents)
 
@@ -64,7 +69,7 @@ void Ambiente::moverAnimales(){
 	}
 }
 """
-    def.move_agents(self,self.agents):
+    def move_agents(self,self.agents):
         for agent in self.agents:
             agent.move()
 
@@ -77,13 +82,10 @@ void Ambiente::actualizar(){
 }
 """
 
-    def.update(self,self.agents):
-        sorted(self.agents, key=lambda student: animal.life,reverse=True)
-
-        for agent in self.agents:
-            if (agent.life = 0):
+    def update(self,self.agents):
+        if agent.life = 0 in self.agents: self.agent(agent)
                 
-
+"""
 void Ambiente::graficar(){
 	//Graficar ambiente
 	//...
@@ -93,6 +95,7 @@ void Ambiente::graficar(){
 		//cout<< "Animal "<< i << " Posicion ( "<<animales[i]->getPosition().x<<" , "<<animales[i]->getPosition().y<<endl;
 	}
 }
+
 void Ambiente::agregarAnimal(Animal *a, Position pos){
 	if (indice < MAX){
 		//Asigno la posicion al animal
@@ -102,12 +105,13 @@ void Ambiente::agregarAnimal(Animal *a, Position pos){
 		cout<<"Ambiente.agregar "<<a->getType()->descripcion()<< " - posicion: ("<<pos.x<<","<<pos.y<<")"<<endl;
 	}
 }
-
-void Ambiente::eliminarAnimal(int idx){
-	if (0 <= idx && idx < indice){ //Controlo que sea un indice valido
-		if (indice > 1) { //Si tengo mas de un animal
-			animales[idx] = animales[indice-1]; //Cambio de lugar el ultimo animal insertado para que no me queden huecos en el arreglo
-		}
-		indice--;//"Elimino" el ultimo animal (xq ya lo pase a otra posicion)
-	}
-}
+"""
+    def add_agent(self,self.agents,number_of_agents):
+        for i in range(number_of_agents):
+            self
+            
+            
+            
+            
+            
+            
