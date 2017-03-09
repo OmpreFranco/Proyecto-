@@ -4,38 +4,45 @@ Created on Wed Mar  8 16:24:37 2017
 
 @author: franco
 """
+#==============================================================================
+# 
+#==============================================================================
 import numpy as np 
-from matplotlib import  pyplot as plt
-import math as mat
+#from matplotlib import  pyplot as plt
+#import math as mat
+
 
 #==============================================================================
 # definimos la clase animal
 #==============================================================================
 class Animal():
     # Atributos de la clase animal 
-    def __init__(self,radio,  vel,  life,  agresividad):
-		self.position_x = 0
-		self.position_y = 0
-		self.perceptionRadio = radio
+    def __init__(self,radio_vision, position , vel,  life,  agresividad): #position es un areglo de dos elementos [X,Y], de que objeto la obtengo ?
+		self.position = position
+		self.perceptionRadio = radio_vision
 		self.velocity = vel
 		self.life = life
-		self.objetivo = 0
-		self.type = TypeOfAnimal(agresividad)
- 
+#		self.objetivo = 0 # Creo que no deberia ir en el contructor eso. no es un atributo 
+		self.type = tipo.TypeOfAnimal(agresividad) # Llamo al metodo de la clase TypeOfAnimal que me devuelve el tipo de animal que es. seguramente-
+                                                      # -se llame de algun modo distinto
+
     # Metodo de clase para establecer la posicion 
-    def setPosition(self ,pos):
-        self.position = pos
+    def setPosition(self ,position):
+        self.position = position
     # Metodo para obtener la nueva posicion         
-    def getPosition(self):
-        return position # aca position no esta bien definido, de donde la obtengo ?
-    #  Metodo para hacer que el animal camine y sense su entorno    
-    def scout(self,agentes,cant): # Agentes seria la lista de animales en el ambiente
-                        # no entiendo que seria lo que se implemento en c++ de Animal *animalsArray[], int cant que es cant?
-        min_Distance = 9999 # Aca calramente , o no , deberia ser un numero menor esta puesto al azar creo CHEQUEAR !
-        obj = agentes * 0 # Creo que aca crea una lista de ceros pero del mismo tamano que agentes
-                            #Ver bien si agentes es la animalArray
-        while i<cant:
-            if ()       #No entiendo como es la estrucutura de este if ni cuales son las variables 
+    def caminar(self, position,vel):
+        position[1] = position[1] + np.cos(np.random.random(1)*2*np.pi)*vel 
+        position[2] = position[2] + np.sin(np.random.random(1)*2*np.pi)*vel 
+
+#        return position # aca position no esta bien definido, de donde la obtengo ?
+        
+        
+    #  Metodo para hacer que el animal sense su entorno    
+    def scout(self,agentes): # Agentes seria la lista de animales en el ambiente
+      
+                        
+            
+            
 #==============================================================================
 # A partir de aca voy a tratar de crear yo [Franco] los metodos de la clase viendo de tomar como guia lo que hizo cristina
 # No entiendo muy bien la sintaxis de C++ es la primera vez que la veo [Franco]
