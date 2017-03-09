@@ -40,7 +40,7 @@ class Ambiente(object):
 
     def detect_targets_and_move(self):
         """
-        Este método llama a :func:'scout' de la clase Animal para cada agente de la lista.
+        Este metodo llama a :func:'scout' de la clase Animal para cada agente de la lista.
         """
         for agent in self.agents:
             objetivo = agent.scout(self.agents)
@@ -48,7 +48,7 @@ class Ambiente(object):
 
     def update(self):
         """
-        Este método busca todos los agentes cuya vida es igual a 0 y los elimina de la lista de agentes.
+        Este metodo busca todos los agentes cuya vida es igual a 0 y los elimina de la lista de agentes.
         """
 #        while agent.life == 0 in self.agents: self.agents.remove(agent)
         for agent in self.agents:
