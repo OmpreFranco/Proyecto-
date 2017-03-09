@@ -31,7 +31,6 @@ class TypeOfAnimal(object):
 ##############################################
 ##Definicion de la clase Hunter
 
-import TypeOfAnimal
 
 class Hunter(TypeOfAnimal):
     def __init__(self,agresividad):
@@ -39,10 +38,10 @@ class Hunter(TypeOfAnimal):
 
 #Defino en metodo actuar-->cazar
     def actuar(self,animal_h,animal_v):
-        pos_v = animal_v.return_position()      
+        pos_v = animal_v.return_Position()      
 	animal_h.move(pos_v)
         if(animal_h.return_position() == pos_v):
-            animal_v.vida = 0
+            animal_v.life = 0
   
 
 ##############################################

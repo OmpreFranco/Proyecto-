@@ -35,8 +35,8 @@ class Animal():
         #Creo un modo de que el animal vaya a la posicion de su objetivo si su agresividad es mayor        
         if objetivo != None and self.agresividad != objetivo.agresividad:
             #calculo la distancia entre el objetivo y el cazador 
-            delta_x = objetivo.position[0]-self.position[0]
-            delta_y = objetivo.position[1]-self.position[1]
+            delta_x = objetivo.position[0]-self.position[0] # Distancia en x entre vicitima y cazador
+            delta_y = objetivo.position[1]-self.position[1] # Distancia en y entre vicitima y cazador
             distancia = np.sqrt((delta_x)**2 + (delta_y)**2)
 
             if distancia > self.velocity:
