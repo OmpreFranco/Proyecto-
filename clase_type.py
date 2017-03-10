@@ -42,7 +42,7 @@ class TypeOfAnimal(object):
     def actuar(self,animal1, animal2):
         pass
     def esObjetivo(self, animal):
-	pass
+        pass
 
 
 ##############################################
@@ -77,7 +77,7 @@ class Hunter(TypeOfAnimal):
         :animal_victim, ``type <Animal>``
         
         """
-	otroEspecimen = None
+        otroEspecimen = None
         if animal_hunter.type.agresividad > animal_victim.type.agresividad:
             #calculo la distancia entre el objetivo y el cazador 
             delta_x = animal_victim.position[0]-animal_hunter.position[0] # Distancia en x entre vicitima y cazador
@@ -89,25 +89,21 @@ class Hunter(TypeOfAnimal):
                 r_versor = [delta_x,delta_y ] / distancia
                 animal_hunter.position[0] = animal_hunter.position[0] + r_versor[0] * animal_hunter.velocity 
                 animal_hunter.position[1] = animal_hunter.position[1] + r_versor[1] * animal_hunter.velocity 
-
                 print("alla voy,preparate gil")
-            
             else:    
                 animal_hunter.position = animal_victim.position 
-		animal_victim.life = 0	
-		animal_hunter.life = 10
+                animal_victim.life = 0	
+                animal_hunter.life = 10
                 print("vas a morir moe wiii")
                 print("Faa, que rico asado")
-	else:
+        else:
             radio=animal_victim.perceptionRadio
-	    otroEspecimen = clase_Animal.Animal(radio,animal_hunter.position, animal_hunter.velocity,300,1)			
+            otroEspecimen = clase_Animal.Animal(radio,animal_hunter.position, animal_hunter.velocity,300,1)			
         return otroEspecimen
 
     def esObjetivo(self, animal):
-	return self.agresividad > animal.agresividad
+        return self.agresividad > animal.agresividad
     
-
-
 
 ##############################################
 ##Definicion de la clase Victim
@@ -137,11 +133,11 @@ class Victim(TypeOfAnimal):
         :animal_hunter, ``type <Animal>``
         
         """
-	otroEspecimen = None
-	if animal_victim.type.agresividad == animal_hunter.type.agresividad:
+        otroEspecimen = None
+        if animal_victim.type.agresividad == animal_hunter.type.agresividad:
             radio = animal_victim.perceptionRadio
-	    otroEspecimen = clase_Animal.Animal(radio,animal_hunter.position, animal_hunter.velocity,300,0)		
-	else:	
+            otroEspecimen = clase_Animal.Animal(radio,animal_hunter.position, animal_hunter.velocity,300,0)		
+        else:	
 
             #calculo la distancia entre el objetivo y el cazador 
 
@@ -159,7 +155,7 @@ class Victim(TypeOfAnimal):
         
 
     def esObjetivo(self, animal):
-	return self.agresividad < animal.agresividad
+        return self.agresividad < animal.agresividad
     
 
 

@@ -2,6 +2,8 @@
 import clase_Animal
 import numpy as np
 
+from matplotlib import  pyplot as plt
+from matplotlib.animation import FuncAnimation
  
 class Ambiente(object):
     """
@@ -55,7 +57,7 @@ class Ambiente(object):
         for agent in self.agents:
             agent.move(agent.objetivo,self)
 
-	self.left_life()
+        self.left_life()
 
     def update(self):
         """
@@ -90,3 +92,51 @@ class Ambiente(object):
                 agent=clase_Animal.Animal(radio_vision, position , vel,  life,  agresividad)
                 self.agents.append(agent)
                 
+    def run(self,TiempoLimite):
+        
+        fig, ax = plt.subplots()
+        ax.set_xlim([0,self.lim[0]])
+        ax.set_ylim([0,self.lim[1]])
+        
+        ani=FuncAnimation(fig, self.frame_update, frames=range(TiempoLimite), interval=20, blit=True, fargs=[ax])
+        plt.show()
+    
+    def frame_update(self,frame,ax):
+        self.time_step()  
+
+        xprey, yprey = [], []
+        xpred, ypred = [], []
+
+        data_prey, = ax.plot([], [], 'ro', markersize=10.0, animated=True)
+        data_pred, = ax.plot([], [], 'b+', markersize=10.0, animated=True)
+
+        for agent in range(len(self.agents)):
+            if (self.agents[agent].agresividad == 1):
+                xpred.append(self.agents[agent].position[0])
+                ypred.append(self.agents[agent].position[1])
+            else:
+                xprey.append(self.agents[agent].position[0])
+                yprey.append(self.agents[agent].position[1])
+        
+        data_prey.set_data(xprey,yprey)
+        data_pred.set_data(xpred,ypred)
+        
+        return [data_prey, data_pred,]
+    
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        

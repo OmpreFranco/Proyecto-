@@ -30,7 +30,7 @@ class Animal():
         self.agresividad = agresividad    #Creo que esto ya no iria
         tipo = clase_type.TypeOfAnimal(agresividad)
         self.type = tipo.getType(agresividad)  
-	self.objetivo = 0
+        self.objetivo = 0
 
     # Metodo de clase para establecer la posicion 
     def return_Position(self):
@@ -62,15 +62,14 @@ class Animal():
 		:objective, type <:class:`Animal`>: el animal se mueve en relacion al objetivo que posee
 
         """   
-	if self.objetivo != None :
-	    otroEspecimen = self.type.actuar(self, self.objetivo)
-	    if type(otroEspecimen) == type(self):	
-	        #Ambiente.agents.append(otroEspecimen)
-	        print("Nacio un animal!")		
-	else:
-    	    #Movete aleatoriamente
-
-            print("nada por aqui")
+        if self.objetivo != None:
+            otroEspecimen = self.type.actuar(self, self.objetivo)
+            if type(otroEspecimen) == type(self):	
+            #Ambiente.agents.append(otroEspecimen)
+                print("Nacio un animal!")		
+            else:
+                #Movete aleatoriamente
+                print("nada por aqui")
             # if (self.agresividad==1):
             lim_animal = landscape.Ambiente.limits(Ambiente)
             a = np.random.random(1)*2*np.pi # Genero el angulo aleatorio 
