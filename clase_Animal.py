@@ -57,18 +57,18 @@ class Animal():
         else:
             print("nada por aqui")
 
-            lim_animal = landscape.Ambiente.limits()
+            lim_animal = landscape.Ambiente.limits(Ambiente)
             a = np.random.random(1)*2*np.pi # Genero el angulo aleatorio 
             self.position[0] = self.position[0] + np.cos(a)*self.velocity # Marco el cambio de posicion en X e Y 
             self.position[1] = self.position[1] + np.sin(a)*self.velocity
             if self.position[0]<0:
                 self.position[0] = 0
             if self.position[0] > lim_animal[0]:
-                self.position = lim_animal[0]
+                self.position[0] = lim_animal[0]
             if self.position[1]<0:
                 self.position[1] = 0
             if self.position[1] > lim_animal[1]:
-                self.position = lim_animal[1]
+                self.position[1] = lim_animal[1]
                                 
                 
     #  Metodo para hacer que el animal sense su entorno    

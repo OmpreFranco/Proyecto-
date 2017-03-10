@@ -52,7 +52,7 @@ class Ambiente(object):
         """
         for agent in self.agents:
             objetivo = agent.scout(self.agents)
-            agent.move(objetivo)
+            agent.move(objetivo,self)
 
     def update(self):
         """
