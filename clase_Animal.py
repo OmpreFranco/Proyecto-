@@ -3,7 +3,7 @@ import numpy as np
 #from matplotlib import  pyplot as plt
 #import math as mat
 import clase_type
-
+import landscape
 #==============================================================================
 # definimos la clase animal
 #==============================================================================
@@ -29,7 +29,7 @@ class Animal():
    
    # Metodo para obtener la nueva posicion               
     
-    def move(self,objetivo):
+    def move(self,objetivo,Ambiente): # Ambiente es un objeto de la clase ambiente
        
        
        #Creo un modo de que el animal vaya a la posicion de su objetivo si su agresividad es mayor        
@@ -50,17 +50,26 @@ class Animal():
             else:    
                 self.position = objetivo.position 
                 print"vas a morir moe wiii"
+                print"Faa, que rico asado"
 
 
 
         #Creo un modo de que el animal camine aleatoriamente
         else:
             print "nada por aqui"
-            
+            lim_animal = Ambiente.limits()
             a = np.random.random(1)*2*np.pi # Genero el angulo aleatorio 
             self.position[0] = self.position[0] + np.cos(a)*self.velocity # Marco el cambio de posicion en X e Y 
             self.position[1] = self.position[1] + np.sin(a)*self.velocity
-
+            if self.position[0]<0:
+                self.position[0] = 0
+            if self.position[0] > lim_animal[0]:
+                self.position = lim_animal[0]
+            if self.position[1]<0:
+                self.position[1] = 0
+            if self.position[1] > lim_animal[1]:
+                self.position = lim_animal[1]
+                                
                 
     #  Metodo para hacer que el animal sense su entorno    
     def scout(self,agentes): # Agentes seria la lista de animales en el ambiente
