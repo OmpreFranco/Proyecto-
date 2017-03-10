@@ -37,6 +37,7 @@ class Ambiente(object):
         """
         self.detect_targets_and_move()
         self.update()
+        
 
     def detect_targets_and_move(self):
         """
@@ -74,22 +75,4 @@ class Ambiente(object):
                 agresividad=np.random.randint(0,2)
                 agent=clase_Animal.Animal(radio_vision, position , vel,  life,  agresividad)
                 self.agents.append(agent)
-             
-"""
-void Ambiente::graficar(){
-	//Graficar ambiente
-	//...
-
-	for(int i=0; i< indice;i++){
-		//Graficar cada animal
-		//cout<< "Animal "<< i << " Posicion ( "<<animales[i]->getPosition().x<<" , "<<animales[i]->getPosition().y<<endl;
-	}
-}
-
-"""
-            
-            
-            
-            
-            
-            
+                
