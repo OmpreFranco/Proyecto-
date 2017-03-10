@@ -155,7 +155,8 @@ class Victim(TypeOfAnimal):
             animal_victim.position[1] = animal_victim.position[1] - r_versor[1]*np.random.random() * animal_victim.velocity 
 
             print("Mamaaaaaa!!!")
-        return otroEspecimen                
+            return None
+        
         
 
     def esObjetivo(self, animal):

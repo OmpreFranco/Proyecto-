@@ -65,7 +65,7 @@ class Animal():
 	if self.objetivo != None :
 	    otroEspecimen = self.type.actuar(self, self.objetivo)
 	    if type(otroEspecimen) == type(self):	
-	        #Ambiente.agents.append(otroEspecimen)
+	        Ambiente.agents.append(otroEspecimen)
 	        print("Nacio un animal!")		
 	else:
     	    #Movete aleatoriamente
@@ -85,7 +85,48 @@ class Animal():
                self.position[1] = lim_animal[1]
 
 
-                    
+
+        """
+       #Creo un modo de que el animal vaya a la posicion de su objetivo si su agresividad es mayor        
+        if self.objetivo != None and self.agresividad > self.objetivo.agresividad:
+
+
+            #calculo la distancia entre el objetivo y el cazador 
+            delta_x = self.objetivo.position[0]-self.position[0] # Distancia en x entre vicitima y cazador
+            delta_y = self.objetivo.position[1]-self.position[1] # Distancia en y entre vicitima y cazador
+            distancia = np.sqrt((delta_x)**2 + (delta_y)**2)
+
+            if distancia > self.velocity:
+                #defino el versor donde apunta la direccion que une ambos objetos
+                r_versor = [delta_x,delta_y ] / distancia
+                self.position[0] = self.position[0] + r_versor[0] * self.velocity 
+                self.position[1] = self.position[1] + r_versor[1] * self.velocity 
+
+                print("alla voy,preparate gil")
+            
+            else:    
+                self.position = self.objetivo.position 
+		self.objetivo.life = 0	
+                print("vas a morir moe wiii")
+                print("Faa, que rico asado")
+
+        #Creo un modo de que el animal camine aleatoriamente
+        else:
+            print("nada por aqui")
+           # if (self.agresividad==1):
+            lim_animal = landscape.Ambiente.limits(Ambiente)
+            a = np.random.random(1)*2*np.pi # Genero el angulo aleatorio 
+            self.position[0] = self.position[0] + np.cos(a)*self.velocity # Marco el cambio de posicion en X e Y 
+            self.position[1] = self.position[1] + np.sin(a)*self.velocity
+            if self.position[0]<0:
+                self.position[0] = 0
+            if self.position[0] > lim_animal[0]:
+                self.position[0] = lim_animal[0]
+            if self.position[1]<0:
+               self.position[1] = 0
+            if self.position[1] > lim_animal[1]:
+               self.position[1] = lim_animal[1]
+       """                             
                 
     #  Metodo para hacer que el animal sense su entorno    
     def scout(self,agentes): # Agentes seria la lista de animales en el ambiente

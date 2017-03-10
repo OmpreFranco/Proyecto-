@@ -84,7 +84,7 @@ class Ambiente(object):
         for i in range(self.number_of_agents):
                 radio_vision=np.random.randint(1,6)#np.random.random(1)+0.01
                 position=[np.random.random(1)*self.lim[0],np.random.random(1)*self.lim[1]]
-                vel=np.random.random(1)*radio_vision+1
+                vel=np.random.random(1)*radio_vision+0.01
                 life=np.random.randint(100,310)
                 agresividad=np.random.randint(0,6)/4
                 agent=clase_Animal.Animal(radio_vision, position , vel,  life,  agresividad)
