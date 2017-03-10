@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>clase_type &#8212; documentación de Survival Project - 1.0.0</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">documentación de Survival Project - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Código de módulo</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Ir a" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Código fuente para clase_type</h1><div class="highlight"><pre>
+<span></span><span class="c1">#Definicion de clase TypeOfAnimal</span>
+
+<div class="viewcode-block" id="TypeOfAnimal"><a class="viewcode-back" href="../CodigoClase_TypeOfAnimal.html#clase_type.TypeOfAnimal">[documentos]</a><span class="k">class</span> <span class="nc">TypeOfAnimal</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;	Descripcion de la clase TypeOfAnimal</span>
+
+<span class="sd">    Esta clase define el comportamiento general de</span>
+<span class="sd">    los animales cazadores y presas</span>
+
+
+<span class="sd">     - **Parametro de construccion**:</span>
+<span class="sd">		:agresividad, ``type &lt;bool&gt;``: nivel de agresividad del animal</span>
+<span class="sd">	</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agresividad</span><span class="p">):</span>
+	<span class="bp">self</span><span class="o">.</span><span class="n">agresividad</span> <span class="o">=</span> <span class="n">agresividad</span>
+
+<span class="c1"># Este metodo permite construir un tipo de animal de acuerdo al nivel de </span>
+<span class="c1"># agresividad del mismo encapsulando la logica de creacion al usuario.</span>
+<span class="c1"># La agresividad esta pensada en un rango [0.1].</span>
+
+<div class="viewcode-block" id="TypeOfAnimal.getType"><a class="viewcode-back" href="../CodigoClase_TypeOfAnimal.html#clase_type.TypeOfAnimal.getType">[documentos]</a>    <span class="k">def</span> <span class="nf">getType</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">agresividad</span><span class="p">):</span>
+
+	<span class="sd">&quot;&quot;&quot; Factory Method que construye un tipo especifico de animal.</span>
+
+<span class="sd">	Este metodo genera un tipo especifico de animal (:class:`Hunter` o :class:`Victim`) </span>
+<span class="sd">	dependiendo del nivel de agresividad</span>
+
+<span class="sd">	**Parameters** </span>
+<span class="sd">			:agresividad, ``type &lt;bool&gt;``</span>
+<span class="sd">`</span>
+<span class="sd">	**Returns** </span>
+<span class="sd">			:tipo_animal, type &lt;:class:`Hunter` or :class:`Victim`&gt;</span>
+<span class="sd">  	&quot;&quot;&quot;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">agresividad</span> <span class="o">&gt;=</span> <span class="mf">0.5</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">Hunter</span><span class="p">(</span><span class="n">agresividad</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Victim</span><span class="p">(</span><span class="n">agresividad</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">actuar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">animal1</span><span class="p">,</span> <span class="n">animal2</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<span class="c1">##############################################</span>
+<span class="c1">##Definicion de la clase Hunter</span>
+
+<span class="c1">#import TypeOfAnimal</span>
+
+<div class="viewcode-block" id="Hunter"><a class="viewcode-back" href="../CodigoClase_TypeOfAnimal.html#clase_type.Hunter">[documentos]</a><span class="k">class</span> <span class="nc">Hunter</span><span class="p">(</span><span class="n">TypeOfAnimal</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;	Descripcion de la clase Hunter</span>
+
+<span class="sd">    Esta clase hereda el comportamiento de la clase :class:`TypeOfAnimal`.</span>
+<span class="sd">    Define el comportamiento de los animales cazadores</span>
+
+
+<span class="sd">     - **Parametro de construccion**:</span>
+<span class="sd">		:agresividad, ``type &lt;bool&gt;``: nivel de agresividad del animal</span>
+<span class="sd">	</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">agresividad</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TypeOfAnimal</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">agresividad</span><span class="p">)</span>
+
+<span class="c1">#Defino en metodo actuar--&gt;cazar</span>
+<div class="viewcode-block" id="Hunter.actuar"><a class="viewcode-back" href="../CodigoClase_TypeOfAnimal.html#clase_type.Hunter.actuar">[documentos]</a>    <span class="k">def</span> <span class="nf">actuar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">animal_hunter</span><span class="p">,</span><span class="n">animal_victim</span><span class="p">):</span>
+
+	<span class="sd">&quot;&quot;&quot; Metodo que implementa la estrategia de caza de un Hunter.</span>
+
+<span class="sd">	**Parameters** </span>
+<span class="sd">			:animal_hunter, ``type &lt;Animal&gt;``</span>
+
+<span class="sd">			:animal_victim, ``type &lt;Animal&gt;``</span>
+<span class="sd">`</span>
+<span class="sd">  	&quot;&quot;&quot;</span>
+        <span class="n">pos_v</span> <span class="o">=</span> <span class="n">animal_v</span><span class="o">.</span><span class="n">return_position</span><span class="p">()</span>      
+	<span class="n">animal_h</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">pos_v</span><span class="p">)</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">animal_h</span><span class="o">.</span><span class="n">return_position</span><span class="p">()</span> <span class="o">==</span> <span class="n">pos_v</span><span class="p">):</span>
+            <span class="n">animal_v</span><span class="o">.</span><span class="n">vida</span> <span class="o">=</span> <span class="mi">0</span></div></div>
+  
+
+<span class="c1">##############################################</span>
+<span class="c1">##Definicion de la clase Victim</span>
+
+<div class="viewcode-block" id="Victim"><a class="viewcode-back" href="../CodigoClase_TypeOfAnimal.html#clase_type.Victim">[documentos]</a><span class="k">class</span> <span class="nc">Victim</span><span class="p">(</span><span class="n">TypeOfAnimal</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;	Descripcion de la clase Victim</span>
+
+<span class="sd">    Esta clase hereda el comportamiento de la clase :class:`TypeOfAnimal`.</span>
+<span class="sd">    Define el comportamiento de los animales victimas o presas</span>
+
+
+<span class="sd">     - **Parametro de construccion**:</span>
+<span class="sd">		:agresividad, ``type &lt;bool&gt;``: nivel de agresividad del animal</span>
+<span class="sd">	</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">agresividad</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TypeOfAnimal</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">agresividad</span><span class="p">)</span>
+
+<span class="c1">#Defino en metodo actuar--&gt;huir o quedarse</span>
+<div class="viewcode-block" id="Victim.actuar"><a class="viewcode-back" href="../CodigoClase_TypeOfAnimal.html#clase_type.Victim.actuar">[documentos]</a>    <span class="k">def</span> <span class="nf">actuar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">animal_victim</span><span class="p">,</span><span class="n">animal_hunter</span><span class="p">):</span>
+
+	<span class="sd">&quot;&quot;&quot; Metodo que implementa la estrategia de escape de un Victim.</span>
+
+<span class="sd">	**Parameters** </span>
+<span class="sd">			:animal_victim, ``type &lt;Animal&gt;``</span>
+
+<span class="sd">			:animal_hunter, ``type &lt;Animal&gt;``</span>
+
+<span class="sd">  	&quot;&quot;&quot;</span>
+
+        <span class="k">pass</span></div></div>
+    
+
+
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">documentación de Survival Project - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Código de módulo</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor 2017, Lince.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.3.
+    </div>
+  </body>
+</html>

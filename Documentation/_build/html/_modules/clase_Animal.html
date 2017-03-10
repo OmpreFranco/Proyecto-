@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>clase_Animal &#8212; documentación de Survival Project - 1.0.0</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">documentación de Survival Project - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Código de módulo</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Ir a" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Código fuente para clase_Animal</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<span class="c1">#from matplotlib import  pyplot as plt</span>
+<span class="c1">#import math as mat</span>
+<span class="kn">import</span> <span class="nn">clase_type</span>
+
+<div class="viewcode-block" id="Animal"><a class="viewcode-back" href="../CodigoClase_Animal.html#clase_Animal.Animal">[documentos]</a><span class="k">class</span> <span class="nc">Animal</span><span class="p">():</span>
+    <span class="c1"># Atributos de la clase animal </span>
+    <span class="sd">&quot;&quot;&quot;	Descripcion de la clase Animal</span>
+
+<span class="sd">    La clase **Animal** permite crear los animales que estaran en la simulacion</span>
+
+<span class="sd">     - **Parametro de construccion**:</span>
+<span class="sd">		:position, ``type &lt;array&gt;``: posicion asignada al animal dentro del ambiente</span>
+<span class="sd">	        :perceptionRadio, ``type &lt;float&gt;``: radio de percepcion del animal</span>
+<span class="sd">		:velocity, ``type &lt;float&gt;``: velocidad del animal en un paso de tiempo?????</span>
+<span class="sd">	        :life, ``type &lt;bool&gt;``: Valor que determina si el animal esta vivo</span>
+<span class="sd">		:type, ``type &lt;:class:`TypeOfAnimal`&gt;``: tipo que posee el animal (:class:`Hunter` o :class:`Victim`)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">radio_vision</span><span class="p">,</span> <span class="n">position</span> <span class="p">,</span> <span class="n">vel</span><span class="p">,</span>  <span class="n">life</span><span class="p">,</span>  <span class="n">agresividad</span><span class="p">):</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">position</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">perceptionRadio</span> <span class="o">=</span> <span class="n">radio_vision</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">vel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">life</span> <span class="o">=</span> <span class="n">life</span>
+        <span class="c1">#self.agresividad = agresividad    #Creo que esto ya no iria</span>
+        <span class="n">tipo</span> <span class="o">=</span> <span class="n">clase_type</span><span class="o">.</span><span class="n">TypeOfAnimal</span><span class="p">(</span><span class="n">agresividad</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">tipo</span><span class="o">.</span><span class="n">getType</span><span class="p">(</span><span class="n">agresividad</span><span class="p">)</span>  
+
+
+    <span class="c1"># Metodo de clase para establecer la posicion </span>
+<div class="viewcode-block" id="Animal.return_Position"><a class="viewcode-back" href="../CodigoClase_Animal.html#clase_Animal.Animal.return_Position">[documentos]</a>    <span class="k">def</span> <span class="nf">return_Position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="c1">#        self.position = position</span>
+        <span class="sd">&quot;&quot;&quot; Metodo que retorna la posicion de un animal</span>
+
+<span class="sd">        Este metodo retorna la posicion asignada al animal dentro del :class:`Ambiente` </span>
+
+<span class="sd">        **Parameters** </span>
+<span class="sd">		</span>
+<span class="sd">`</span>
+<span class="sd">        **Returns** </span>
+<span class="sd">		:position, type &lt;array&gt;</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span></div>
+   
+   
+   <span class="c1"># Metodo para obtener la nueva posicion               </span>
+    
+<div class="viewcode-block" id="Animal.move"><a class="viewcode-back" href="../CodigoClase_Animal.html#clase_Animal.Animal.move">[documentos]</a>    <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">objetivo</span><span class="p">):</span>
+       
+        <span class="sd">&quot;&quot;&quot; Metodo que indica calcula el movimiento del animal</span>
+
+<span class="sd">        Este metodo determina el movimiento del animal de acuerdo al tipo que posee y a si </span>
+<span class="sd">        detecto un objetivo</span>
+
+<span class="sd">        **Parameters** </span>
+<span class="sd">		:objective, type &lt;:class:`Animal`&gt;: el animal se mueve en relacion al objetivo que posee</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>       
+       <span class="c1">#Creo un modo de que el animal vaya a la posicion de su objetivo si su agresividad es mayor        </span>
+        <span class="k">if</span> <span class="n">objetivo</span> <span class="o">!=</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">agresividad</span> <span class="o">!=</span> <span class="n">objetivo</span><span class="o">.</span><span class="n">agresividad</span><span class="p">:</span>
+
+
+            <span class="c1">#calculo la distancia entre el objetivo y el cazador </span>
+            <span class="n">delta_x</span> <span class="o">=</span> <span class="n">objetivo</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Distancia en x entre vicitima y cazador</span>
+            <span class="n">delta_y</span> <span class="o">=</span> <span class="n">objetivo</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># Distancia en y entre vicitima y cazador</span>
+            <span class="n">distancia</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">delta_x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">delta_y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">distancia</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">velocity</span><span class="p">:</span>
+                <span class="c1">#defino el versor donde apunta la direccion que une ambos objetos</span>
+                <span class="n">r_versor</span> <span class="o">=</span> <span class="p">[</span><span class="n">delta_x</span><span class="p">,</span><span class="n">delta_y</span> <span class="p">]</span> <span class="o">/</span> <span class="n">distancia</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">+</span> <span class="n">r_versor</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">velocity</span> 
+                <span class="nb">print</span> <span class="s2">&quot;alla voy,preparate gil&quot;</span>
+            
+            <span class="k">else</span><span class="p">:</span>    
+                <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">objetivo</span><span class="o">.</span><span class="n">position</span> 
+                <span class="nb">print</span><span class="s2">&quot;vas a morir moe wiii&quot;</span>
+
+
+
+        <span class="c1">#Creo un modo de que el animal camine aleatoriamente</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span> <span class="s2">&quot;nada por aqui&quot;</span>
+            
+            <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="c1"># Genero el angulo aleatorio </span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">velocity</span> <span class="c1"># Marco el cambio de posicion en X e Y </span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">velocity</span></div>
+
+                
+    <span class="c1">#  Metodo para hacer que el animal sense su entorno    </span>
+    <span class="k">def</span> <span class="nf">scout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">agentes</span><span class="p">):</span> <span class="c1"># Agentes seria la lista de animales en el ambiente</span>
+        <span class="n">objetivo</span> <span class="o">=</span> <span class="kc">None</span> 
+        <span class="n">minDistance</span> <span class="o">=</span> <span class="mi">9999</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">agentes</span><span class="p">:</span>
+            <span class="n">pos_agent</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">return_Position</span><span class="p">()</span>
+            <span class="n">distancia</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">pos_agent</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">pos_agent</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">distancia</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">perceptionRadio</span> <span class="ow">and</span> <span class="n">distancia</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">minDistance</span> <span class="o">&gt;</span> <span class="n">distancia</span><span class="p">:</span>
+                <span class="n">minDistance</span> <span class="o">=</span> <span class="n">distancia</span>
+                <span class="n">objetivo</span> <span class="o">=</span> <span class="n">i</span> 
+                <span class="nb">print</span> <span class="s2">&quot;detecte algo&quot;</span>        <span class="c1">#Tenemos que ver que hace cuando detecto algo </span>
+            <span class="c1"># Aca mi animal no detecta nada  </span>
+        <span class="k">return</span> <span class="n">objetivo</span></div>
+        
+                 
+            
+      
+                        
+            
+            
+<span class="c1">#==============================================================================</span>
+<span class="c1"># A partir de aca voy a tratar de crear yo [Franco] los metodos de la clase viendo de tomar como guia lo que hizo cristina</span>
+<span class="c1"># No entiendo muy bien la sintaxis de C++ es la primera vez que la veo [Franco]</span>
+<span class="c1">#==============================================================================</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">documentación de Survival Project - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Código de módulo</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor 2017, Lince.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.3.
+    </div>
+  </body>
+</html>

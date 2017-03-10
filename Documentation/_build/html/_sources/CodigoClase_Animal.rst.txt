@@ -1,0 +1,10 @@
+Clase Animal
+============
+Documentación Autogenerada
+
+
+.. automodule:: clase_Animal
+
+.. autoclass:: Animal
+    :members:
+

@@ -29,7 +29,14 @@ class Ambiente(object):
             if number_of_agents is None:
                 self.number_of_agents=10
             self.add_agents()
-            
+    def limits(self):
+        """
+        Este metodo devuelve los valores limites del Ambiente        
+        """
+        return self.lim
+
+
+        
     def time_step(self):
         """
         Este metodo adelanta la simulacion un paso llamando a :func:'self.detect_targets', 
