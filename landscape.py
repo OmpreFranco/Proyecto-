@@ -29,7 +29,14 @@ class Ambiente(object):
             if number_of_agents is None:
                 self.number_of_agents=10
             self.add_agents()
-            
+    def limits(self):
+        """
+        Este metodo devuelve los valores limites del Ambiente        
+        """
+        return self.lim
+
+
+        
     def time_step(self):
         """
         Este metodo adelanta la simulacion un paso llamando a :func:'self.detect_targets', 
@@ -37,6 +44,7 @@ class Ambiente(object):
         """
         self.detect_targets_and_move()
         self.update()
+        
 
     def detect_targets_and_move(self):
         """
@@ -44,7 +52,7 @@ class Ambiente(object):
         """
         for agent in self.agents:
             objetivo = agent.scout(self.agents)
-            agent.move(objetivo)
+            agent.move(objetivo,self)
 
     def update(self):
         """
@@ -74,22 +82,4 @@ class Ambiente(object):
                 agresividad=np.random.randint(0,2)
                 agent=clase_Animal.Animal(radio_vision, position , vel,  life,  agresividad)
                 self.agents.append(agent)
-             
-"""
-void Ambiente::graficar(){
-	//Graficar ambiente
-	//...
-
-	for(int i=0; i< indice;i++){
-		//Graficar cada animal
-		//cout<< "Animal "<< i << " Posicion ( "<<animales[i]->getPosition().x<<" , "<<animales[i]->getPosition().y<<endl;
-	}
-}
-
-"""
-            
-            
-            
-            
-            
-            
+                
