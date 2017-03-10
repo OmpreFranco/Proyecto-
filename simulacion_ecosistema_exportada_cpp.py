@@ -2,6 +2,7 @@
 #import numpy as np 
 from matplotlib import  pyplot as plt
 #import math as mat
+import clase_Animal
 from matplotlib.animation import FuncAnimation
 #from matplotlib.animation import ArtistAnimation
 plt.rcParams['animation.ffmpeg_path'] = '/usr/bin/ffmpeg'
@@ -15,23 +16,25 @@ import landscape
 #Programa principal 
 
 ##PARAMETROS DE LA SIMULACION
-TiempoLimite = 100  
+TiempoLimite = 500  
 
 #Creo el ecosistema
-xMax=15
-yMax=15 
+xMax=30
+yMax=30 
 # Impongo el limite del ambiente
 limite = [xMax, yMax]
 
+animales=[clase_Animal.Animal(100.0, [4.0,4.0], 2.0, 1.0, 1.0), clase_Animal.Animal(1.0, [10.0,10.0],1.0,1.0, 0.0)]
+
 # Creo el objeto ecosistema de la clase ambiente 
-ecosistema = landscape.Ambiente(limite,30) 
+ecosistema = landscape.Ambiente(limite,30)#agents=animales) 
 
 
 fig, ax = plt.subplots()
 xprey, yprey = [], []
 xpred, ypred = [], []
-data_prey, = ax.plot([], [], 'ro', markersize=5.0*xMax, animated=True)
-data_pred, = ax.plot([], [], 'b+', markersize=5.0*xMax, animated=True)
+data_prey, = ax.plot([], [], 'ro', markersize=10.0, animated=True)
+data_pred, = ax.plot([], [], 'b+', markersize=10.0, animated=True)
 
 ax.set_xlim([0,xMax])
 ax.set_ylim([0,yMax])
@@ -43,6 +46,9 @@ def init_draw():
 
 def update(frame):
     ecosistema.time_step()
+    xprey, yprey = [], []
+    xpred, ypred = [], []
+
     for agent in range(len(ecosistema.agents)):
         if (ecosistema.agents[agent].agresividad == 1):
             xpred.append(ecosistema.agents[agent].position[0])

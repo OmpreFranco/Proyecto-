@@ -52,7 +52,8 @@ class Ambiente(object):
         """
         for agent in self.agents:
             objetivo = agent.scout(self.agents)
-            agent.move(objetivo,self)
+        for agent in self.agents:
+            agent.move(agent.objetivo,self)
 
     def update(self):
         """
@@ -75,11 +76,11 @@ class Ambiente(object):
         camina mas distancia de la que ve.
         """
         for i in range(self.number_of_agents):
-                radio_vision=np.random.random(1)+0.01
+                radio_vision=np.random.randint(0,5)#np.random.random(1)+0.01
                 position=[np.random.random(1)*self.lim[0],np.random.random(1)*self.lim[1]]
                 vel=np.random.random(1)*radio_vision+0.01
                 life=1.0
-                agresividad=np.random.randint(0,2)
+                agresividad=np.random.randint(0,6)/5
                 agent=clase_Animal.Animal(radio_vision, position , vel,  life,  agresividad)
                 self.agents.append(agent)
                 
