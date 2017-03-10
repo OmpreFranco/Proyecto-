@@ -61,7 +61,32 @@ class Animal():
         **Parameters** 
 		:objective, type <:class:`Animal`>: el animal se mueve en relacion al objetivo que posee
 
-        """       
+        """   
+	if self.objetivo != None :
+	    otroEspecimen = self.type.actuar(self, self.objetivo)
+	    if type(otroEspecimen) == type(self):	
+	        #Ambiente.agents.append(otroEspecimen)
+	        print("Nacio un animal!")		
+	else:
+    	    #Movete aleatoriamente
+            print("nada por aqui")
+            # if (self.agresividad==1):
+            lim_animal = landscape.Ambiente.limits(Ambiente)
+            a = np.random.random(1)*2*np.pi # Genero el angulo aleatorio 
+            self.position[0] = self.position[0] + np.cos(a)*self.velocity # Marco el cambio de posicion en X e Y 
+            self.position[1] = self.position[1] + np.sin(a)*self.velocity
+            if self.position[0]<0:
+                self.position[0] = 0
+            if self.position[0] > lim_animal[0]:
+                self.position[0] = lim_animal[0]
+            if self.position[1]<0:
+               self.position[1] = 0
+            if self.position[1] > lim_animal[1]:
+               self.position[1] = lim_animal[1]
+
+
+
+        """
        #Creo un modo de que el animal vaya a la posicion de su objetivo si su agresividad es mayor        
         if self.objetivo != None and self.agresividad > self.objetivo.agresividad:
 
@@ -101,7 +126,7 @@ class Animal():
                self.position[1] = 0
             if self.position[1] > lim_animal[1]:
                self.position[1] = lim_animal[1]
-                                
+       """                             
                 
     #  Metodo para hacer que el animal sense su entorno    
     def scout(self,agentes): # Agentes seria la lista de animales en el ambiente
@@ -122,7 +147,7 @@ class Animal():
         for i in agentes:
             pos_agent = i.return_Position()
             distancia = np.sqrt((pos_agent[0]-self.position[0])**2 + (pos_agent[1]-self.position[1])**2)
-            if distancia <= self.perceptionRadio and distancia != 0 and minDistance > distancia:
+            if distancia <= self.perceptionRadio and distancia != 0 and minDistance > distancia :#and self.type.esObjetivo(i):
                 minDistance = distancia
                 self.objetivo = i 
                 print("detecte algo")       #Tenemos que ver que hace cuando detecto algo 
@@ -135,7 +160,4 @@ class Animal():
                         
             
             
-#==============================================================================
-# A partir de aca voy a tratar de crear yo [Franco] los metodos de la clase viendo de tomar como guia lo que hizo cristina
-# No entiendo muy bien la sintaxis de C++ es la primera vez que la veo [Franco]
-#==============================================================================
+
