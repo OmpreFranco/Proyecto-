@@ -69,6 +69,7 @@ class Animal():
 	        print("Nacio un animal!")		
 	else:
     	    #Movete aleatoriamente
+
             print("nada por aqui")
             # if (self.agresividad==1):
             lim_animal = landscape.Ambiente.limits(Ambiente)
@@ -85,8 +86,6 @@ class Animal():
                self.position[1] = lim_animal[1]
 
 
-                    
-                
     #  Metodo para hacer que el animal sense su entorno    
     def scout(self,agentes): # Agentes seria la lista de animales en el ambiente
         """ Metodo que realiza la busqueda de un nuevo objetivo
