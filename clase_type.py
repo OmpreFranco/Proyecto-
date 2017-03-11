@@ -13,7 +13,7 @@ class TypeOfAnimal(object):
 
 
      - **Parametro de construccion**:
-		:agresividad, ``type <bool>``: nivel de agresividad del animal
+		:agresividad, ``type <int>``: nivel de agresividad del animal
 	
     """
 
@@ -25,17 +25,18 @@ class TypeOfAnimal(object):
 # La agresividad esta pensada en un rango [0.1].
 
     def getType(self,agresividad):
+
         """ Factory Method que construye un tipo especifico de animal.
         
         Este metodo genera un tipo especifico de animal (:class:`Hunter` o :class:`Victim`) 
         dependiendo del nivel de agresividad
         
         **Parameters** 
-            :agresividad, ``type <bool>``
+                :agresividad, ``type <int>``
             
-            **Returns** 
-			:tipo_animal, type <:class:`Hunter` or :class:`Victim`>
-      	"""
+        **Returns** 
+                :tipo_animal, type <:class:`Hunter` or :class:`Victim`>
+        """
        
         if(agresividad >= 0.5):
             return Hunter(agresividad)
@@ -44,9 +45,25 @@ class TypeOfAnimal(object):
 
     def actuar(self,animal1, animal2):
         pass
+
+        """ Metodo que le permite al animal actuar dependiendo del tipo de animal que es.
+        
+        **Parameters** 
+            :animal1, ``type <Animal>``
+            :animal2, ``type <Animal>``
+         
+      	"""
+       
     def esObjetivo(self, animal):
         pass
 
+        """ Metodo que le permite al animal saber cuales de los animales que puede 
+            ver en su radio de busqueda son un objetivo o no.
+        
+        **Parameters** 
+            :animal, ``type <Animal>``
+         
+      	"""
 
 ##############################################
 ##Definicion de la clase Hunter
@@ -62,7 +79,7 @@ class Hunter(TypeOfAnimal):
 
 
      - **Parametro de construccion**:
-		:agresividad, ``type <bool>``: nivel de agresividad del animal
+		:agresividad, ``type <int>``: nivel de agresividad del animal
 	
     """
 
@@ -75,10 +92,12 @@ class Hunter(TypeOfAnimal):
         """ Metodo que implementa la estrategia de caza de un Hunter.
         
         **Parameters** 
-        :animal_hunter, ``type <Animal>``
+                :animal_hunter, ``type <Animal>``
         
-        :animal_victim, ``type <Animal>``
+                :animal_victim, ``type <Animal>``
         
+        **Returns** 
+	        :otroEspecimen, type <:class:`Animal`>
         """
  
         if animal.agresividad == objetivo.agresividad:
@@ -91,6 +110,7 @@ class Hunter(TypeOfAnimal):
             print("Nacio un pichon de",type(animal.typeofanimal))
         
         if animal.agresividad > objetivo.agresividad:
+
             #calculo la distancia entre el objetivo y el cazador 
             delta_x = objetivo.position[0]-animal.position[0] # Distancia en x entre vicitima y cazador
             delta_y = objetivo.position[1]-animal.position[1] # Distancia en y entre vicitima y cazador
@@ -111,7 +131,18 @@ class Hunter(TypeOfAnimal):
                 #time.sleep(5.0)
 
     def esObjetivo(self, animal):
-        return self.agresividad > animal.agresividad
+        """ Metodo que permite al animal saber si los animales que tiene en su radio de busqueda son objetivos 
+        dependiendo de la diferencia de agresividad.  
+        
+        **Parameters** 
+                :animal, ``type <Animal>``
+        
+        **Returns** 
+                :comparacion entre las agresividades, ``type <comparacion>``
+        """
+
+	return self.agresividad > animal.agresividad
+
     
 
 ##############################################
@@ -126,20 +157,25 @@ class Victim(TypeOfAnimal):
 
 
      - **Parametro de construccion**:
-		:agresividad, ``type <bool>``: nivel de agresividad del animal
+		:agresividad, ``type <int>``: nivel de agresividad del animal
 	
     """
+
     def __init__(self,agresividad):
         super(Victim, self).__init__(agresividad)
 
 #Defino en metodo actuar-->huir o quedarse
     def actuar(self,animal,objetivo,Ambiente):
+
         """ Metodo que implementa la estrategia de escape de un Victim.
         
         **Parameters** 
-        :animal_victim, ``type <Animal>``
+                :animal_victim, ``type <Animal>``
         
-        :animal_hunter, ``type <Animal>``
+                :animal_hunter, ``type <Animal>``
+
+        **Returns** 
+                :otroEspecimen, type <:class:`Animal`>
         
         """
         
@@ -178,7 +214,19 @@ class Victim(TypeOfAnimal):
         
 
     def esObjetivo(self, animal):
-        return self.agresividad < animal.agresividad
+
+        """ Metodo que permite al animal saber si los animales que tiene en su radio de busqueda son objetivos 
+        dependiendo de la diferencia de agresividad.  
+        
+        **Parameters** 
+                :animal, ``type <Animal>``
+        
+        **Returns** 
+                :comparacion entre las agresividades, ``type <comparacion>``
+        """
+
+	return self.agresividad < animal.agresividad
+
     
 
 

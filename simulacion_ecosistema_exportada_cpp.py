@@ -18,8 +18,6 @@ limite = [30, 30]
 
 # Creo el objeto ecosistema de la clase ambiente 
 ecosistema = landscape.Ambiente(limite,30)#agents=animales) 
-#ecosistema = landscape.Ambiente(limite,agents=animales) 
-
 ecosistema.run(TiempoLimite=500)
 
 #for i in range(300):

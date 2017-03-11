@@ -8,17 +8,18 @@ import landscape
 #==============================================================================
 
 class Animal():
-    # Atributos de la clase animal 
+
+    # Atributos de la clase animal
     """	Descripcion de la clase Animal
 
     La clase **Animal** permite crear los animales que estaran en la simulacion
 
      - **Parametro de construccion**:
-		:position, ``type <array>``: posicion asignada al animal dentro del ambiente
-	        :perceptionRadio, ``type <float>``: radio de percepcion del animal
-		:velocity, ``type <float>``: velocidad del animal en un paso de tiempo?????
-	        :life, ``type <bool>``: Valor que determina si el animal esta vivo
-		:type, ``type <:class:`TypeOfAnimal`>``: tipo que posee el animal (:class:`Hunter` o :class:`Victim`)
+            :position, `type <array>`: posicion asignada al animal dentro del ambiente
+            :perceptionRadio, `type <float>`: radio de percepcion del animal
+            :velocity, `type <float>`: velocidad del animal en un paso de tiempo??
+            :life, `type <bool>`: Valor que determina si el animal esta vivo
+            :type, `type` <:class:`clase_type.TypeOfAnimal`>: tipo que posee el animal (:class:`clase_type.Hunter` o :class:`clase_type.Victim`) 
 
     """
 
@@ -34,16 +35,14 @@ class Animal():
 
     # Metodo de clase para establecer la posicion 
     def return_Position(self):
+
 	# self.position = position
         """ Metodo que retorna la posicion de un animal
 
-        Este metodo retorna la posicion asignada al animal dentro del :class:`Ambiente` 
+        Este metodo retorna la posicion asignada al animal dentro del :class:`landscape.Ambiente` 
 
-        **Parameters** 
-		
-`
         **Returns** 
-		:position, type <array>
+		:position, `type <array>`
 
         """
         return self.position
@@ -53,13 +52,13 @@ class Animal():
     
     def move(self,objetivo,Ambiente): # Ambiente es un objeto de la clase ambiente
        
-        """ Metodo que indica calcula el movimiento del animal
+        """ Metodo que indica y calcula el movimiento del animal
 
         Este metodo determina el movimiento del animal de acuerdo al tipo que posee y a si 
         detecto un objetivo
 
         **Parameters** 
-		:objective, type <:class:`Animal`>: el animal se mueve en relacion al objetivo que posee
+		:objective, `type` <:class:`Animal`>: el animal se mueve en relacion al objetivo que posee
 
         """
         
@@ -86,18 +85,18 @@ class Animal():
             if self.position[1] > lim_animal[1]:
                 self.position[1] = lim_animal[1]
 
-
     #  Metodo para hacer que el animal sense su entorno    
     def scout(self,agentes): # Agentes seria la lista de animales en el ambiente
+
         """ Metodo que realiza la busqueda de un nuevo objetivo
 
-        Este metodo retorna el objetivo encontrado en el :class:`Ambiente` 
+        Este metodo retorna el objetivo encontrado en el :class:`landscape.Ambiente` 
 
         **Parameters** 
-		:agents, type <array>		
+		:agents, `type <array>`		
 `
         **Returns** 
-		:position, type <array>
+                :position, `type <array>`
 
         """
 

@@ -98,21 +98,21 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">position, <code class="docutils literal"><span class="pre">type</span> <span class="pre">&lt;array&gt;</span></code>:</th></tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">position, <cite>type &lt;array&gt;</cite>:</th></tr>
 <tr class="field-odd field"><td>&#160;</td><td class="field-body">posicion asignada al animal dentro del ambiente</td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2">perceptionRadio, <code class="docutils literal"><span class="pre">type</span> <span class="pre">&lt;float&gt;</span></code>:</th></tr>
+<tr class="field-even field"><th class="field-name" colspan="2">perceptionRadio, <cite>type &lt;float&gt;</cite>:</th></tr>
 <tr class="field-even field"><td>&#160;</td><td class="field-body">radio de percepcion del animal</td>
 </tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">velocity, <code class="docutils literal"><span class="pre">type</span> <span class="pre">&lt;float&gt;</span></code>:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body">velocidad del animal en un paso de tiempo?????</td>
+<tr class="field-odd field"><th class="field-name" colspan="2">velocity, <cite>type &lt;float&gt;</cite>:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">velocidad del animal en un paso de tiempo??</td>
 </tr>
-<tr class="field-even field"><th class="field-name" colspan="2">life, <code class="docutils literal"><span class="pre">type</span> <span class="pre">&lt;bool&gt;</span></code>:</th></tr>
+<tr class="field-even field"><th class="field-name" colspan="2">life, <cite>type &lt;bool&gt;</cite>:</th></tr>
 <tr class="field-even field"><td>&#160;</td><td class="field-body">Valor que determina si el animal esta vivo</td>
 </tr>
 </tbody>
 </table>
-<p class="last">:type, <code class="docutils literal"><span class="pre">type</span> <span class="pre">&lt;:class:`TypeOfAnimal`&gt;</span></code>: tipo que posee el animal (<code class="xref py py-class docutils literal"><span class="pre">Hunter</span></code> o <code class="xref py py-class docutils literal"><span class="pre">Victim</span></code>)</p>
+<p class="last">:type, <cite>type</cite> &lt;<a class="reference internal" href="CodigoClase_TypeOfAnimal.html#clase_type.TypeOfAnimal" title="clase_type.TypeOfAnimal"><code class="xref py py-class docutils literal"><span class="pre">clase_type.TypeOfAnimal</span></code></a>&gt;: tipo que posee el animal (<a class="reference internal" href="CodigoClase_TypeOfAnimal.html#clase_type.Hunter" title="clase_type.Hunter"><code class="xref py py-class docutils literal"><span class="pre">clase_type.Hunter</span></code></a> o <a class="reference internal" href="CodigoClase_TypeOfAnimal.html#clase_type.Victim" title="clase_type.Victim"><code class="xref py py-class docutils literal"><span class="pre">clase_type.Victim</span></code></a>)</p>
 </dd>
 </dl>
 </li>
@@ -120,13 +120,13 @@
 </div></blockquote>
 <dl class="method">
 <dt id="clase_Animal.Animal.move">
-<code class="descname">move</code><span class="sig-paren">(</span><em>objetivo</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/clase_Animal.html#Animal.move"><span class="viewcode-link">[fuente]</span></a><a class="headerlink" href="#clase_Animal.Animal.move" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Metodo que indica calcula el movimiento del animal</p>
+<code class="descname">move</code><span class="sig-paren">(</span><em>objetivo</em>, <em>Ambiente</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/clase_Animal.html#Animal.move"><span class="viewcode-link">[fuente]</span></a><a class="headerlink" href="#clase_Animal.Animal.move" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Metodo que indica y calcula el movimiento del animal</p>
 <p>Este metodo determina el movimiento del animal de acuerdo al tipo que posee y a si 
 detecto un objetivo</p>
 <dl class="docutils">
 <dt><strong>Parameters</strong> </dt>
-<dd>:objective, type &lt;<a class="reference internal" href="#clase_Animal.Animal" title="clase_Animal.Animal"><code class="xref py py-class docutils literal"><span class="pre">Animal</span></code></a>&gt;: el animal se mueve en relacion al objetivo que posee</dd>
+<dd>:objective, <cite>type</cite> &lt;<a class="reference internal" href="#clase_Animal.Animal" title="clase_Animal.Animal"><code class="xref py py-class docutils literal"><span class="pre">Animal</span></code></a>&gt;: el animal se mueve en relacion al objetivo que posee</dd>
 </dl>
 </dd></dl>
 
@@ -134,15 +134,29 @@ detecto un objetivo</p>
 <dt id="clase_Animal.Animal.return_Position">
 <code class="descname">return_Position</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/clase_Animal.html#Animal.return_Position"><span class="viewcode-link">[fuente]</span></a><a class="headerlink" href="#clase_Animal.Animal.return_Position" title="Enlazar permanentemente con esta definición">¶</a></dt>
 <dd><p>Metodo que retorna la posicion de un animal</p>
+<p>Este metodo retorna la posicion asignada al animal dentro del <a class="reference internal" href="CodigoClase_Landscape.html#landscape.Ambiente" title="landscape.Ambiente"><code class="xref py py-class docutils literal"><span class="pre">landscape.Ambiente</span></code></a></p>
+<dl class="docutils">
+<dt><strong>Returns</strong> </dt>
+<dd>:position, <cite>type &lt;array&gt;</cite></dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="clase_Animal.Animal.scout">
+<code class="descname">scout</code><span class="sig-paren">(</span><em>agentes</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/clase_Animal.html#Animal.scout"><span class="viewcode-link">[fuente]</span></a><a class="headerlink" href="#clase_Animal.Animal.scout" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Metodo que realiza la busqueda de un nuevo objetivo</p>
 <blockquote>
-<div><p>Este metodo retorna la posicion asignada al animal dentro del <code class="xref py py-class docutils literal"><span class="pre">Ambiente</span></code></p>
-<p><strong>Parameters</strong></p>
+<div><p>Este metodo retorna el objetivo encontrado en el <a class="reference internal" href="CodigoClase_Landscape.html#landscape.Ambiente" title="landscape.Ambiente"><code class="xref py py-class docutils literal"><span class="pre">landscape.Ambiente</span></code></a></p>
+<dl class="docutils">
+<dt><strong>Parameters</strong> </dt>
+<dd>:agents, <cite>type &lt;array&gt;</cite></dd>
+</dl>
 </div></blockquote>
 <dl class="docutils">
 <dt><a href="#id1"><span class="problematic" id="id2">`</span></a></dt>
 <dd><dl class="first last docutils">
 <dt><strong>Returns</strong> </dt>
-<dd>:position, type &lt;array&gt;</dd>
+<dd>:position, <cite>type &lt;array&gt;</cite></dd>
 </dl>
 </dd>
 </dl>

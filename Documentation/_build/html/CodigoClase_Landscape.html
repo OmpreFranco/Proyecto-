@@ -81,11 +81,13 @@
 <span class="target" id="module-landscape"></span><dl class="class">
 <dt id="landscape.Ambiente">
 <em class="property">class </em><code class="descclassname">landscape.</code><code class="descname">Ambiente</code><span class="sig-paren">(</span><em>lim=None</em>, <em>number_of_agents=None</em>, <em>agents=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/landscape.html#Ambiente"><span class="viewcode-link">[fuente]</span></a><a class="headerlink" href="#landscape.Ambiente" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>La clase <strong>Ambiente</strong> crea el universo donde van a interactuar los animalitos.</p>
+<dd><p>Descripcion de la clase Ambiente</p>
+<p>La clase <strong>Ambiente</strong> crea el universo donde van a interactuar los animalitos.</p>
 <dl class="method">
 <dt id="landscape.Ambiente.add_agents">
 <code class="descname">add_agents</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/landscape.html#Ambiente.add_agents"><span class="viewcode-link">[fuente]</span></a><a class="headerlink" href="#landscape.Ambiente.add_agents" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Este metodo agrega objetos de la clase Animal a la lista agents de la clase ambiente.
+<dd><p>Metodo que genera la lista de animales (agentes)</p>
+<p>Este metodo agrega objetos de la clase Animal a la lista agents de la clase <code class="xref py py-class docutils literal"><span class="pre">ambiente</span></code>.
 Esta es una forma de agregar agentes al ambiente, puede haber alternativas. En este caso
 la posicion, el radio de vision y la velocidad se dan como numeros aleatorios entre 0 y 1.
 La vida (life) la inicializamos siempre en 1.0 y la agresividad puede tomar los valores 0 o 1.
@@ -98,20 +100,29 @@ camina mas distancia de la que ve.</p>
 <dl class="method">
 <dt id="landscape.Ambiente.detect_targets_and_move">
 <code class="descname">detect_targets_and_move</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/landscape.html#Ambiente.detect_targets_and_move"><span class="viewcode-link">[fuente]</span></a><a class="headerlink" href="#landscape.Ambiente.detect_targets_and_move" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Este metodo llama a :func:&#8217;scout&#8217; de la clase Animal para cada agente de la lista.</p>
+<dd><p>Metodo de deteccion y movimiento del animal</p>
+<p>Este metodo llama a :func:&#8217;scout&#8217; de la clase :class:&#8217;Animal&#8217; para cada agente de la lista.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="landscape.Ambiente.limits">
+<code class="descname">limits</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/landscape.html#Ambiente.limits"><span class="viewcode-link">[fuente]</span></a><a class="headerlink" href="#landscape.Ambiente.limits" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Este metodo devuelve los valores limites del Ambiente</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="landscape.Ambiente.time_step">
 <code class="descname">time_step</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/landscape.html#Ambiente.time_step"><span class="viewcode-link">[fuente]</span></a><a class="headerlink" href="#landscape.Ambiente.time_step" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Este metodo adelanta la simulacion un paso llamando a :func:&#8217;self.detect_targets&#8217;, 
+<dd><p>Metodo avance temporal</p>
+<p>Este metodo adelanta la simulacion un paso llamando a :func:&#8217;self.detect_targets&#8217;, 
 :func:&#8217;self.move_agents&#8217;, :func:&#8217;self.update&#8217;</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="landscape.Ambiente.update">
 <code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/landscape.html#Ambiente.update"><span class="viewcode-link">[fuente]</span></a><a class="headerlink" href="#landscape.Ambiente.update" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Este metodo busca todos los agentes cuya vida es igual a 0 y los elimina de la lista de agentes.</p>
+<dd><p>Metodo que actualiza la canitadad de animales(agentes) vivos en el ambiente</p>
+<p>Este metodo busca todos los agentes cuya vida es igual a 0 y los elimina de la lista de agentes.</p>
 </dd></dl>
 
 </dd></dl>
