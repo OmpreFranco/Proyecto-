@@ -1,8 +1,11 @@
 #Definicion de clase TypeOfAnimal
 import numpy as np
 import clase_Animal
-class TypeOfAnimal(object):
+import landscape
 
+import time
+
+class TypeOfAnimal(object):
     """	Descripcion de la clase TypeOfAnimal
 
     Esta clase define el comportamiento general de
@@ -52,7 +55,7 @@ class TypeOfAnimal(object):
       	"""
        
     def esObjetivo(self, animal):
-	pass
+        pass
 
         """ Metodo que le permite al animal saber cuales de los animales que puede 
             ver en su radio de busqueda son un objetivo o no.
@@ -85,8 +88,7 @@ class Hunter(TypeOfAnimal):
         super(Hunter, self).__init__(agresividad)
 
 #Defino en metodo actuar-->cazar
-    def actuar(self,animal_hunter,animal_victim):
-
+    def actuar(self,animal,objetivo,Ambiente):
         """ Metodo que implementa la estrategia de caza de un Hunter.
         
         **Parameters** 
@@ -97,35 +99,38 @@ class Hunter(TypeOfAnimal):
         **Returns** 
 	        :otroEspecimen, type <:class:`Animal`>
         """
+ 
+        if animal.agresividad == objetivo.agresividad:
+            
+            radio = animal.perceptionRadio
+            otroEspecimen = clase_Animal.Animal(radio,objetivo.position, objetivo.velocity,300,0)
+            
+            #Ambiente.agents.append(otroEspecimen)
+            
+            print("Nacio un pichon de",type(animal.typeofanimal))
+        
+        if animal.agresividad > objetivo.agresividad:
 
-	otroEspecimen = None
-        if animal_hunter.type.agresividad > animal_victim.type.agresividad:
             #calculo la distancia entre el objetivo y el cazador 
-            delta_x = animal_victim.position[0]-animal_hunter.position[0] # Distancia en x entre vicitima y cazador
-            delta_y = animal_victim.position[1]-animal_hunter.position[1] # Distancia en y entre vicitima y cazador
+            delta_x = objetivo.position[0]-animal.position[0] # Distancia en x entre vicitima y cazador
+            delta_y = objetivo.position[1]-animal.position[1] # Distancia en y entre vicitima y cazador
             distancia = np.sqrt((delta_x)**2 + (delta_y)**2)
 
-            if distancia > animal_hunter.velocity:
+            if distancia > animal.velocity:
                 #defino el versor donde apunta la direccion que une ambos objetos
-                r_versor = [delta_x,delta_y ] / distancia
-                animal_hunter.position[0] = animal_hunter.position[0] + r_versor[0] * animal_hunter.velocity 
-                animal_hunter.position[1] = animal_hunter.position[1] + r_versor[1] * animal_hunter.velocity 
-
+                r_versor = [delta_x,delta_y ] / distancia + 0.01
+                animal.position[0] = animal.position[0] + r_versor[0] * animal.velocity 
+                animal.position[1] = animal.position[1] + r_versor[1] * animal.velocity 
                 print("alla voy,preparate gil")
-            
-            else:    
-                animal_hunter.position = animal_victim.position 
-		animal_victim.life = 0	
-		animal_hunter.life = 10
+            else:
                 print("vas a morir moe wiii")
-                print("Faa, que rico asado")
-	else:
-            radio=animal_victim.perceptionRadio
-	    otroEspecimen = clase_Animal.Animal(radio,animal_hunter.position, animal_hunter.velocity,300,1)			
-        return otroEspecimen
+                animal.position = objetivo.position 
+                objetivo.life = 0	
+                animal.life += 10
+                print("Faa, que rico asado")	
+                #time.sleep(5.0)
 
     def esObjetivo(self, animal):
-
         """ Metodo que permite al animal saber si los animales que tiene en su radio de busqueda son objetivos 
         dependiendo de la diferencia de agresividad.  
         
@@ -137,9 +142,8 @@ class Hunter(TypeOfAnimal):
         """
 
 	return self.agresividad > animal.agresividad
+
     
-
-
 
 ##############################################
 ##Definicion de la clase Victim
@@ -161,7 +165,7 @@ class Victim(TypeOfAnimal):
         super(Victim, self).__init__(agresividad)
 
 #Defino en metodo actuar-->huir o quedarse
-    def actuar(self,animal_victim,animal_hunter):
+    def actuar(self,animal,objetivo,Ambiente):
 
         """ Metodo que implementa la estrategia de escape de un Victim.
         
@@ -174,26 +178,39 @@ class Victim(TypeOfAnimal):
                 :otroEspecimen, type <:class:`Animal`>
         
         """
+        
+        if type(animal.typeofanimal) == type(objetivo.typeofanimal):
+            
+            radio = animal.perceptionRadio
+            otroEspecimen = clase_Animal.Animal(radio,objetivo.position, objetivo.velocity,300,0)
+            
+            #Ambiente.agents.append(otroEspecimen)
+            
+            print("Nacio un pichon de",type(animal.typeofanimal))
+    
+        #calculo la distancia entre el objetivo y el cazador 
 
-	otroEspecimen = None
-	if animal_victim.type.agresividad == animal_hunter.type.agresividad:
-            radio = animal_victim.perceptionRadio
-	    otroEspecimen = clase_Animal.Animal(radio,animal_hunter.position, animal_hunter.velocity,300,0)		
-	else:	
+        delta_x = animal.position[0]-objetivo.position[0] # Distancia en x entre vicitima y cazador
+        delta_y = animal.position[1]-objetivo.position[1] # Distancia en y entre vicitima y cazador
+        distancia = np.sqrt((delta_x)**2 + (delta_y)**2)+0.001
 
-            #calculo la distancia entre el objetivo y el cazador 
+        #defino el versor donde apunta la direccion que une ambos objetos
+        r_versor = [delta_x,delta_y ] / distancia + 0.001
+        animal.position[0] = animal.position[0] - r_versor[0]*np.random.random() * animal.velocity 
+        animal.position[1] = animal.position[1] - r_versor[1]*np.random.random() * animal.velocity 
 
-            delta_x = animal_victim.position[0]-animal_hunter.position[0] # Distancia en x entre vicitima y cazador
-            delta_y = animal_victim.position[1]-animal_hunter.position[1] # Distancia en y entre vicitima y cazador
-            distancia = np.sqrt((delta_x)**2 + (delta_y)**2)
-
-            #defino el versor donde apunta la direccion que une ambos objetos
-            r_versor = [delta_x,delta_y ] / distancia
-            animal_victim.position[0] = animal_victim.position[0] - r_versor[0]*np.random.random() * animal_victim.velocity 
-            animal_victim.position[1] = animal_victim.position[1] - r_versor[1]*np.random.random() * animal_victim.velocity 
-
-            print("Mamaaaaaa!!!")
-        return otroEspecimen                
+        print("Mamaaaaaa!!!")
+            
+        lim_animal = landscape.Ambiente.limits(Ambiente)
+            
+        if animal.position[0]<0:
+            animal.position[0] = 0
+        if animal.position[0] > lim_animal[0]:
+            animal.position[0] = lim_animal[0]
+        if animal.position[1]<0:
+            animal.position[1] = 0
+        if animal.position[1] > lim_animal[1]:
+            animal.position[1] = lim_animal[1]
         
 
     def esObjetivo(self, animal):
@@ -209,6 +226,7 @@ class Victim(TypeOfAnimal):
         """
 
 	return self.agresividad < animal.agresividad
+
     
 
 
