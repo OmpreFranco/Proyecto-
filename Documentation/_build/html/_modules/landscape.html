@@ -69,18 +69,23 @@
 
  
 <div class="viewcode-block" id="Ambiente"><a class="viewcode-back" href="../CodigoClase_Landscape.html#landscape.Ambiente">[documentos]</a><span class="k">class</span> <span class="nc">Ambiente</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; La clase **Ambiente** crea el universo donde van a interactuar los animalitos.</span>
-<span class="sd">    </span>
+
+    <span class="sd">&quot;&quot;&quot;	Descripcion de la clase Ambiente</span>
+
+<span class="sd">    La clase **Ambiente** crea el universo donde van a interactuar los animalitos.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">lim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">number_of_agents</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">agents</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Args: </span>
-<span class="sd">            lim (list): lista de dos elementos que define los bordes del universo bidimensional y plano.</span>
-<span class="sd">            number_of_agents (int): umero de agentes que tiene el ambiente, por default es 10.</span>
-<span class="sd">            agents (list): lista con los objetos que representan los animales, se puede pasar</span>
+<span class="sd">        -**Parametros**: </span>
+<span class="sd">                :lim, ``type &lt;list&gt;``: lista de dos elementos que define los bordes del universo bidimensional y plano.</span>
+<span class="sd">                :number_of_agents, ``type &lt;int&gt;``: numero de agentes que tiene el ambiente, por default es 10.</span>
+<span class="sd">                :agents, ``type &lt;list&gt;``: lista con los objetos que representan los animales, se puede pasar</span>
 <span class="sd">                           al momento de instanciar la clase y si no por default llama a </span>
-<span class="sd">                           func:&#39;self.add_agents&#39; que agrega agentes de forma aleatoria.</span>
+<span class="sd">                           func:&#39;self.add_agents&#39; que agrega agentes de forma aleatoria. !!!ver nota</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">lim</span><span class="o">=</span><span class="n">lim</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">agents</span><span class="o">=</span><span class="n">agents</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">number_of_agents</span><span class="o">=</span><span class="n">number_of_agents</span>
@@ -93,35 +98,63 @@
             <span class="k">if</span> <span class="n">number_of_agents</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">number_of_agents</span><span class="o">=</span><span class="mi">10</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_agents</span><span class="p">()</span>
-            
+<div class="viewcode-block" id="Ambiente.limits"><a class="viewcode-back" href="../CodigoClase_Landscape.html#landscape.Ambiente.limits">[documentos]</a>    <span class="k">def</span> <span class="nf">limits</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;Este metodo devuelve los valores limites del Ambiente</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">lim</span></div>
+
+
+        
 <div class="viewcode-block" id="Ambiente.time_step"><a class="viewcode-back" href="../CodigoClase_Landscape.html#landscape.Ambiente.time_step">[documentos]</a>    <span class="k">def</span> <span class="nf">time_step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+
+        <span class="sd">&quot;&quot;&quot;Metodo avance temporal</span>
+
 <span class="sd">        Este metodo adelanta la simulacion un paso llamando a :func:&#39;self.detect_targets&#39;, </span>
 <span class="sd">        :func:&#39;self.move_agents&#39;, :func:&#39;self.update&#39;</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">detect_targets_and_move</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span></div>
+        
 
-<div class="viewcode-block" id="Ambiente.detect_targets_and_move"><a class="viewcode-back" href="../CodigoClase_Landscape.html#landscape.Ambiente.detect_targets_and_move">[documentos]</a>    <span class="k">def</span> <span class="nf">detect_targets_and_move</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Este metodo llama a :func:&#39;scout&#39; de la clase Animal para cada agente de la lista.</span>
+<div class="viewcode-block" id="Ambiente.detect_targets_and_move"><a class="viewcode-back" href="../CodigoClase_Landscape.html#landscape.Ambiente.detect_targets_and_move">[documentos]</a>    <span class="k">def</span> <span class="nf">detect_targets_and_move</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
+
+        <span class="sd">&quot;&quot;&quot;Metodo de deteccion y movimiento del animal</span>
+
+<span class="sd">        Este metodo llama a :func:&#39;scout&#39; de la clase :class:&#39;Animal&#39; para cada agente de la lista.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="k">for</span> <span class="n">agent</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">agents</span><span class="p">:</span>
             <span class="n">objetivo</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">scout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">agents</span><span class="p">)</span>
-            <span class="n">agent</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">objetivo</span><span class="p">)</span></div>
+        <span class="k">for</span> <span class="n">agent</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">agents</span><span class="p">:</span>
+            <span class="n">agent</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">objetivo</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span>
+
+	<span class="bp">self</span><span class="o">.</span><span class="n">left_life</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Ambiente.update"><a class="viewcode-back" href="../CodigoClase_Landscape.html#landscape.Ambiente.update">[documentos]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+
+        <span class="sd">&quot;&quot;&quot;Metodo que actualiza la canitadad de animales(agentes) vivos en el ambiente</span>
+
 <span class="sd">        Este metodo busca todos los agentes cuya vida es igual a 0 y los elimina de la lista de agentes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+
 <span class="c1">#        while agent.life == 0 in self.agents: self.agents.remove(agent)</span>
         <span class="k">for</span> <span class="n">agent</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">agents</span><span class="p">:</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">life</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">life</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">agents</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">agent</span><span class="p">)</span></div>
 
+    <span class="k">def</span> <span class="nf">left_life</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">agent</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">agents</span><span class="p">:</span>
+            <span class="n">agent</span><span class="o">.</span><span class="n">life</span><span class="o">-=</span> <span class="o">.</span><span class="mi">5</span>
+	
 <div class="viewcode-block" id="Ambiente.add_agents"><a class="viewcode-back" href="../CodigoClase_Landscape.html#landscape.Ambiente.add_agents">[documentos]</a>    <span class="k">def</span> <span class="nf">add_agents</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; </span>
-<span class="sd">        Este metodo agrega objetos de la clase Animal a la lista agents de la clase ambiente.</span>
+        <span class="sd">&quot;&quot;&quot;Metodo que genera la lista de animales (agentes)</span>
+
+<span class="sd">        Este metodo agrega objetos de la clase Animal a la lista agents de la clase :class:`ambiente`.</span>
 <span class="sd">        Esta es una forma de agregar agentes al ambiente, puede haber alternativas. En este caso</span>
 <span class="sd">        la posicion, el radio de vision y la velocidad se dan como numeros aleatorios entre 0 y 1.</span>
 <span class="sd">        La vida (life) la inicializamos siempre en 1.0 y la agresividad puede tomar los valores 0 o 1.</span>
@@ -131,32 +164,14 @@
 <span class="sd">        camina mas distancia de la que ve.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">number_of_agents</span><span class="p">):</span>
-                <span class="n">radio_vision</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="mf">0.01</span>
+                <span class="n">radio_vision</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span><span class="c1">#np.random.random(1)+0.01</span>
                 <span class="n">position</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">lim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">lim</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
-                <span class="n">vel</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">radio_vision</span><span class="o">+</span><span class="mf">0.01</span>
-                <span class="n">life</span><span class="o">=</span><span class="mf">1.0</span>
-                <span class="n">agresividad</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+                <span class="n">vel</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">radio_vision</span><span class="o">+</span><span class="mi">1</span>
+                <span class="n">life</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">310</span><span class="p">)</span>
+                <span class="n">agresividad</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span><span class="o">/</span><span class="mi">4</span>
                 <span class="n">agent</span><span class="o">=</span><span class="n">clase_Animal</span><span class="o">.</span><span class="n">Animal</span><span class="p">(</span><span class="n">radio_vision</span><span class="p">,</span> <span class="n">position</span> <span class="p">,</span> <span class="n">vel</span><span class="p">,</span>  <span class="n">life</span><span class="p">,</span>  <span class="n">agresividad</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">agents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">agent</span><span class="p">)</span></div></div>
-             
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">void Ambiente::graficar(){</span>
-<span class="sd">	//Graficar ambiente</span>
-<span class="sd">	//...</span>
 
-<span class="sd">	for(int i=0; i&lt; indice;i++){</span>
-<span class="sd">		//Graficar cada animal</span>
-<span class="sd">		//cout&lt;&lt; &quot;Animal &quot;&lt;&lt; i &lt;&lt; &quot; Posicion ( &quot;&lt;&lt;animales[i]-&gt;getPosition().x&lt;&lt;&quot; , &quot;&lt;&lt;animales[i]-&gt;getPosition().y&lt;&lt;endl;</span>
-<span class="sd">	}</span>
-<span class="sd">}</span>
-
-<span class="sd">&quot;&quot;&quot;</span>
-            
-            
-            
-            
-            
-            
 </pre></div>
 
           </div>

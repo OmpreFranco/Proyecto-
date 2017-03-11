@@ -99,7 +99,7 @@ los animales cazadores y presas</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">agresividad, <code class="docutils literal"><span class="pre">type</span> <span class="pre">&lt;bool&gt;</span></code>:</th></tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">agresividad, <code class="docutils literal"><span class="pre">type</span> <span class="pre">&lt;int&gt;</span></code>:</th></tr>
 <tr class="field-odd field"><td>&#160;</td><td class="field-body">nivel de agresividad del animal</td>
 </tr>
 </tbody>
@@ -113,21 +113,13 @@ los animales cazadores y presas</p>
 <dt id="clase_type.TypeOfAnimal.getType">
 <code class="descname">getType</code><span class="sig-paren">(</span><em>agresividad</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/clase_type.html#TypeOfAnimal.getType"><span class="viewcode-link">[fuente]</span></a><a class="headerlink" href="#clase_type.TypeOfAnimal.getType" title="Enlazar permanentemente con esta definición">¶</a></dt>
 <dd><p>Factory Method que construye un tipo especifico de animal.</p>
-<blockquote>
-<div><p>Este metodo genera un tipo especifico de animal (<a class="reference internal" href="#clase_type.Hunter" title="clase_type.Hunter"><code class="xref py py-class docutils literal"><span class="pre">Hunter</span></code></a> o <a class="reference internal" href="#clase_type.Victim" title="clase_type.Victim"><code class="xref py py-class docutils literal"><span class="pre">Victim</span></code></a>) 
+<p>Este metodo genera un tipo especifico de animal (<a class="reference internal" href="#clase_type.Hunter" title="clase_type.Hunter"><code class="xref py py-class docutils literal"><span class="pre">Hunter</span></code></a> o <a class="reference internal" href="#clase_type.Victim" title="clase_type.Victim"><code class="xref py py-class docutils literal"><span class="pre">Victim</span></code></a>) 
 dependiendo del nivel de agresividad</p>
 <dl class="docutils">
 <dt><strong>Parameters</strong> </dt>
-<dd>:agresividad, <code class="docutils literal"><span class="pre">type</span> <span class="pre">&lt;bool&gt;</span></code></dd>
-</dl>
-</div></blockquote>
-<dl class="docutils">
-<dt><a href="#id1"><span class="problematic" id="id2">`</span></a></dt>
-<dd><dl class="first last docutils">
+<dd>:agresividad, <code class="docutils literal"><span class="pre">type</span> <span class="pre">&lt;int&gt;</span></code></dd>
 <dt><strong>Returns</strong> </dt>
 <dd>:tipo_animal, type &lt;<a class="reference internal" href="#clase_type.Hunter" title="clase_type.Hunter"><code class="xref py py-class docutils literal"><span class="pre">Hunter</span></code></a> or <a class="reference internal" href="#clase_type.Victim" title="clase_type.Victim"><code class="xref py py-class docutils literal"><span class="pre">Victim</span></code></a>&gt;</dd>
-</dl>
-</dd>
 </dl>
 </dd></dl>
 
@@ -147,7 +139,7 @@ Define el comportamiento de los animales cazadores</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">agresividad, <code class="docutils literal"><span class="pre">type</span> <span class="pre">&lt;bool&gt;</span></code>:</th></tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">agresividad, <code class="docutils literal"><span class="pre">type</span> <span class="pre">&lt;int&gt;</span></code>:</th></tr>
 <tr class="field-odd field"><td>&#160;</td><td class="field-body">nivel de agresividad del animal</td>
 </tr>
 </tbody>
@@ -161,15 +153,27 @@ Define el comportamiento de los animales cazadores</p>
 <dt id="clase_type.Hunter.actuar">
 <code class="descname">actuar</code><span class="sig-paren">(</span><em>animal_hunter</em>, <em>animal_victim</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/clase_type.html#Hunter.actuar"><span class="viewcode-link">[fuente]</span></a><a class="headerlink" href="#clase_type.Hunter.actuar" title="Enlazar permanentemente con esta definición">¶</a></dt>
 <dd><p>Metodo que implementa la estrategia de caza de un Hunter.</p>
-<blockquote>
-<div><dl class="docutils">
+<dl class="docutils">
 <dt><strong>Parameters</strong> </dt>
 <dd><p class="first">:animal_hunter, <code class="docutils literal"><span class="pre">type</span> <span class="pre">&lt;Animal&gt;</span></code></p>
 <p class="last">:animal_victim, <code class="docutils literal"><span class="pre">type</span> <span class="pre">&lt;Animal&gt;</span></code></p>
 </dd>
+<dt><strong>Returns</strong> </dt>
+<dd>:otroEspecimen, type &lt;<code class="xref py py-class docutils literal"><span class="pre">Animal</span></code>&gt;</dd>
 </dl>
-</div></blockquote>
-<p><a href="#id3"><span class="problematic" id="id4">`</span></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="clase_type.Hunter.esObjetivo">
+<code class="descname">esObjetivo</code><span class="sig-paren">(</span><em>animal</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/clase_type.html#Hunter.esObjetivo"><span class="viewcode-link">[fuente]</span></a><a class="headerlink" href="#clase_type.Hunter.esObjetivo" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Metodo que permite al animal saber si los animales que tiene en su radio de busqueda son objetivos 
+dependiendo de la diferencia de agresividad.</p>
+<dl class="docutils">
+<dt><strong>Parameters</strong> </dt>
+<dd>:animal, <code class="docutils literal"><span class="pre">type</span> <span class="pre">&lt;Animal&gt;</span></code></dd>
+<dt><strong>Returns</strong> </dt>
+<dd>:comparacion entre las agresividades, <code class="docutils literal"><span class="pre">type</span> <span class="pre">&lt;comparacion&gt;</span></code></dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -188,7 +192,7 @@ Define el comportamiento de los animales victimas o presas</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">agresividad, <code class="docutils literal"><span class="pre">type</span> <span class="pre">&lt;bool&gt;</span></code>:</th></tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">agresividad, <code class="docutils literal"><span class="pre">type</span> <span class="pre">&lt;int&gt;</span></code>:</th></tr>
 <tr class="field-odd field"><td>&#160;</td><td class="field-body">nivel de agresividad del animal</td>
 </tr>
 </tbody>
@@ -207,6 +211,21 @@ Define el comportamiento de los animales victimas o presas</p>
 <dd><p class="first">:animal_victim, <code class="docutils literal"><span class="pre">type</span> <span class="pre">&lt;Animal&gt;</span></code></p>
 <p class="last">:animal_hunter, <code class="docutils literal"><span class="pre">type</span> <span class="pre">&lt;Animal&gt;</span></code></p>
 </dd>
+<dt><strong>Returns</strong> </dt>
+<dd>:otroEspecimen, type &lt;<code class="xref py py-class docutils literal"><span class="pre">Animal</span></code>&gt;</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="clase_type.Victim.esObjetivo">
+<code class="descname">esObjetivo</code><span class="sig-paren">(</span><em>animal</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/clase_type.html#Victim.esObjetivo"><span class="viewcode-link">[fuente]</span></a><a class="headerlink" href="#clase_type.Victim.esObjetivo" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Metodo que permite al animal saber si los animales que tiene en su radio de busqueda son objetivos 
+dependiendo de la diferencia de agresividad.</p>
+<dl class="docutils">
+<dt><strong>Parameters</strong> </dt>
+<dd>:animal, <code class="docutils literal"><span class="pre">type</span> <span class="pre">&lt;Animal&gt;</span></code></dd>
+<dt><strong>Returns</strong> </dt>
+<dd>:comparacion entre las agresividades, <code class="docutils literal"><span class="pre">type</span> <span class="pre">&lt;comparacion&gt;</span></code></dd>
 </dl>
 </dd></dl>
 

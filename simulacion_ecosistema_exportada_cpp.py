@@ -16,7 +16,7 @@ import landscape
 #Programa principal 
 
 ##PARAMETROS DE LA SIMULACION
-TiempoLimite = 500  
+TiempoLimite =500  
 
 #Creo el ecosistema
 xMax=300
@@ -27,7 +27,7 @@ limite = [xMax, yMax]
 animales=[clase_Animal.Animal(100.0, [4.0,4.0], 2.0, 1.0, 1.0), clase_Animal.Animal(1.0, [10.0,10.0],1.0,1.0, 0.0)]
 
 # Creo el objeto ecosistema de la clase ambiente 
-ecosistema = landscape.Ambiente(limite,300)#agents=animales) 
+ecosistema = landscape.Ambiente(limite,30)#agents=animales) 
 
 
 fig, ax = plt.subplots()

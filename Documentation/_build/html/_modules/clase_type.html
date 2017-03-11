@@ -64,7 +64,8 @@
             
   <h1>Código fuente para clase_type</h1><div class="highlight"><pre>
 <span></span><span class="c1">#Definicion de clase TypeOfAnimal</span>
-
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">clase_Animal</span>
 <div class="viewcode-block" id="TypeOfAnimal"><a class="viewcode-back" href="../CodigoClase_TypeOfAnimal.html#clase_type.TypeOfAnimal">[documentos]</a><span class="k">class</span> <span class="nc">TypeOfAnimal</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;	Descripcion de la clase TypeOfAnimal</span>
@@ -74,12 +75,12 @@
 
 
 <span class="sd">     - **Parametro de construccion**:</span>
-<span class="sd">		:agresividad, ``type &lt;bool&gt;``: nivel de agresividad del animal</span>
+<span class="sd">		:agresividad, ``type &lt;int&gt;``: nivel de agresividad del animal</span>
 <span class="sd">	</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agresividad</span><span class="p">):</span>
-	<span class="bp">self</span><span class="o">.</span><span class="n">agresividad</span> <span class="o">=</span> <span class="n">agresividad</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">agresividad</span> <span class="o">=</span> <span class="n">agresividad</span>
 
 <span class="c1"># Este metodo permite construir un tipo de animal de acuerdo al nivel de </span>
 <span class="c1"># agresividad del mismo encapsulando la logica de creacion al usuario.</span>
@@ -87,24 +88,44 @@
 
 <div class="viewcode-block" id="TypeOfAnimal.getType"><a class="viewcode-back" href="../CodigoClase_TypeOfAnimal.html#clase_type.TypeOfAnimal.getType">[documentos]</a>    <span class="k">def</span> <span class="nf">getType</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">agresividad</span><span class="p">):</span>
 
-	<span class="sd">&quot;&quot;&quot; Factory Method que construye un tipo especifico de animal.</span>
-
-<span class="sd">	Este metodo genera un tipo especifico de animal (:class:`Hunter` o :class:`Victim`) </span>
-<span class="sd">	dependiendo del nivel de agresividad</span>
-
-<span class="sd">	**Parameters** </span>
-<span class="sd">			:agresividad, ``type &lt;bool&gt;``</span>
-<span class="sd">`</span>
-<span class="sd">	**Returns** </span>
-<span class="sd">			:tipo_animal, type &lt;:class:`Hunter` or :class:`Victim`&gt;</span>
-<span class="sd">  	&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot; Factory Method que construye un tipo especifico de animal.</span>
+<span class="sd">        </span>
+<span class="sd">        Este metodo genera un tipo especifico de animal (:class:`Hunter` o :class:`Victim`) </span>
+<span class="sd">        dependiendo del nivel de agresividad</span>
+<span class="sd">        </span>
+<span class="sd">        **Parameters** </span>
+<span class="sd">                :agresividad, ``type &lt;int&gt;``</span>
+<span class="sd">            </span>
+<span class="sd">        **Returns** </span>
+<span class="sd">                :tipo_animal, type &lt;:class:`Hunter` or :class:`Victim`&gt;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+       
         <span class="k">if</span><span class="p">(</span><span class="n">agresividad</span> <span class="o">&gt;=</span> <span class="mf">0.5</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">Hunter</span><span class="p">(</span><span class="n">agresividad</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">Victim</span><span class="p">(</span><span class="n">agresividad</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">actuar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">animal1</span><span class="p">,</span> <span class="n">animal2</span><span class="p">):</span>
-        <span class="k">pass</span></div>
+        <span class="k">pass</span>
+
+        <span class="sd">&quot;&quot;&quot; Metodo que le permite al animal actuar dependiendo del tipo de animal que es.</span>
+<span class="sd">        </span>
+<span class="sd">        **Parameters** </span>
+<span class="sd">            :animal1, ``type &lt;Animal&gt;``</span>
+<span class="sd">            :animal2, ``type &lt;Animal&gt;``</span>
+<span class="sd">         </span>
+<span class="sd">      	&quot;&quot;&quot;</span>
+       
+    <span class="k">def</span> <span class="nf">esObjetivo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">animal</span><span class="p">):</span>
+	<span class="k">pass</span>
+
+        <span class="sd">&quot;&quot;&quot; Metodo que le permite al animal saber cuales de los animales que puede </span>
+<span class="sd">            ver en su radio de busqueda son un objetivo o no.</span>
+<span class="sd">        </span>
+<span class="sd">        **Parameters** </span>
+<span class="sd">            :animal, ``type &lt;Animal&gt;``</span>
+<span class="sd">         </span>
+<span class="sd">      	&quot;&quot;&quot;</span></div>
 
 <span class="c1">##############################################</span>
 <span class="c1">##Definicion de la clase Hunter</span>
@@ -120,30 +141,70 @@
 
 
 <span class="sd">     - **Parametro de construccion**:</span>
-<span class="sd">		:agresividad, ``type &lt;bool&gt;``: nivel de agresividad del animal</span>
+<span class="sd">		:agresividad, ``type &lt;int&gt;``: nivel de agresividad del animal</span>
 <span class="sd">	</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">agresividad</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">TypeOfAnimal</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">agresividad</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Hunter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">agresividad</span><span class="p">)</span>
 
 <span class="c1">#Defino en metodo actuar--&gt;cazar</span>
 <div class="viewcode-block" id="Hunter.actuar"><a class="viewcode-back" href="../CodigoClase_TypeOfAnimal.html#clase_type.Hunter.actuar">[documentos]</a>    <span class="k">def</span> <span class="nf">actuar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">animal_hunter</span><span class="p">,</span><span class="n">animal_victim</span><span class="p">):</span>
 
-	<span class="sd">&quot;&quot;&quot; Metodo que implementa la estrategia de caza de un Hunter.</span>
+        <span class="sd">&quot;&quot;&quot; Metodo que implementa la estrategia de caza de un Hunter.</span>
+<span class="sd">        </span>
+<span class="sd">        **Parameters** </span>
+<span class="sd">                :animal_hunter, ``type &lt;Animal&gt;``</span>
+<span class="sd">        </span>
+<span class="sd">                :animal_victim, ``type &lt;Animal&gt;``</span>
+<span class="sd">        </span>
+<span class="sd">        **Returns** </span>
+<span class="sd">	        :otroEspecimen, type &lt;:class:`Animal`&gt;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
-<span class="sd">	**Parameters** </span>
-<span class="sd">			:animal_hunter, ``type &lt;Animal&gt;``</span>
+	<span class="n">otroEspecimen</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">animal_hunter</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">agresividad</span> <span class="o">&gt;</span> <span class="n">animal_victim</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">agresividad</span><span class="p">:</span>
+            <span class="c1">#calculo la distancia entre el objetivo y el cazador </span>
+            <span class="n">delta_x</span> <span class="o">=</span> <span class="n">animal_victim</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">animal_hunter</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Distancia en x entre vicitima y cazador</span>
+            <span class="n">delta_y</span> <span class="o">=</span> <span class="n">animal_victim</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">animal_hunter</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># Distancia en y entre vicitima y cazador</span>
+            <span class="n">distancia</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">delta_x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">delta_y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="sd">			:animal_victim, ``type &lt;Animal&gt;``</span>
-<span class="sd">`</span>
-<span class="sd">  	&quot;&quot;&quot;</span>
-        <span class="n">pos_v</span> <span class="o">=</span> <span class="n">animal_v</span><span class="o">.</span><span class="n">return_position</span><span class="p">()</span>      
-	<span class="n">animal_h</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">pos_v</span><span class="p">)</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">animal_h</span><span class="o">.</span><span class="n">return_position</span><span class="p">()</span> <span class="o">==</span> <span class="n">pos_v</span><span class="p">):</span>
-            <span class="n">animal_v</span><span class="o">.</span><span class="n">vida</span> <span class="o">=</span> <span class="mi">0</span></div></div>
-  
+            <span class="k">if</span> <span class="n">distancia</span> <span class="o">&gt;</span> <span class="n">animal_hunter</span><span class="o">.</span><span class="n">velocity</span><span class="p">:</span>
+                <span class="c1">#defino el versor donde apunta la direccion que une ambos objetos</span>
+                <span class="n">r_versor</span> <span class="o">=</span> <span class="p">[</span><span class="n">delta_x</span><span class="p">,</span><span class="n">delta_y</span> <span class="p">]</span> <span class="o">/</span> <span class="n">distancia</span>
+                <span class="n">animal_hunter</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">animal_hunter</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">r_versor</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">animal_hunter</span><span class="o">.</span><span class="n">velocity</span> 
+                <span class="n">animal_hunter</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">animal_hunter</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">r_versor</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">animal_hunter</span><span class="o">.</span><span class="n">velocity</span> 
+
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;alla voy,preparate gil&quot;</span><span class="p">)</span>
+            
+            <span class="k">else</span><span class="p">:</span>    
+                <span class="n">animal_hunter</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">animal_victim</span><span class="o">.</span><span class="n">position</span> 
+		<span class="n">animal_victim</span><span class="o">.</span><span class="n">life</span> <span class="o">=</span> <span class="mi">0</span>	
+		<span class="n">animal_hunter</span><span class="o">.</span><span class="n">life</span> <span class="o">=</span> <span class="mi">10</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;vas a morir moe wiii&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Faa, que rico asado&quot;</span><span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+            <span class="n">radio</span><span class="o">=</span><span class="n">animal_victim</span><span class="o">.</span><span class="n">perceptionRadio</span>
+	    <span class="n">otroEspecimen</span> <span class="o">=</span> <span class="n">clase_Animal</span><span class="o">.</span><span class="n">Animal</span><span class="p">(</span><span class="n">radio</span><span class="p">,</span><span class="n">animal_hunter</span><span class="o">.</span><span class="n">position</span><span class="p">,</span> <span class="n">animal_hunter</span><span class="o">.</span><span class="n">velocity</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>			
+        <span class="k">return</span> <span class="n">otroEspecimen</span></div>
+
+<div class="viewcode-block" id="Hunter.esObjetivo"><a class="viewcode-back" href="../CodigoClase_TypeOfAnimal.html#clase_type.Hunter.esObjetivo">[documentos]</a>    <span class="k">def</span> <span class="nf">esObjetivo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">animal</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot; Metodo que permite al animal saber si los animales que tiene en su radio de busqueda son objetivos </span>
+<span class="sd">        dependiendo de la diferencia de agresividad.  </span>
+<span class="sd">        </span>
+<span class="sd">        **Parameters** </span>
+<span class="sd">                :animal, ``type &lt;Animal&gt;``</span>
+<span class="sd">        </span>
+<span class="sd">        **Returns** </span>
+<span class="sd">                :comparacion entre las agresividades, ``type &lt;comparacion&gt;``</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+	<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">agresividad</span> <span class="o">&gt;</span> <span class="n">animal</span><span class="o">.</span><span class="n">agresividad</span></div></div>
+    
+
+
 
 <span class="c1">##############################################</span>
 <span class="c1">##Definicion de la clase Victim</span>
@@ -157,27 +218,62 @@
 
 
 <span class="sd">     - **Parametro de construccion**:</span>
-<span class="sd">		:agresividad, ``type &lt;bool&gt;``: nivel de agresividad del animal</span>
+<span class="sd">		:agresividad, ``type &lt;int&gt;``: nivel de agresividad del animal</span>
 <span class="sd">	</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">agresividad</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">TypeOfAnimal</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">agresividad</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Victim</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">agresividad</span><span class="p">)</span>
 
 <span class="c1">#Defino en metodo actuar--&gt;huir o quedarse</span>
 <div class="viewcode-block" id="Victim.actuar"><a class="viewcode-back" href="../CodigoClase_TypeOfAnimal.html#clase_type.Victim.actuar">[documentos]</a>    <span class="k">def</span> <span class="nf">actuar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">animal_victim</span><span class="p">,</span><span class="n">animal_hunter</span><span class="p">):</span>
 
-	<span class="sd">&quot;&quot;&quot; Metodo que implementa la estrategia de escape de un Victim.</span>
+        <span class="sd">&quot;&quot;&quot; Metodo que implementa la estrategia de escape de un Victim.</span>
+<span class="sd">        </span>
+<span class="sd">        **Parameters** </span>
+<span class="sd">                :animal_victim, ``type &lt;Animal&gt;``</span>
+<span class="sd">        </span>
+<span class="sd">                :animal_hunter, ``type &lt;Animal&gt;``</span>
 
-<span class="sd">	**Parameters** </span>
-<span class="sd">			:animal_victim, ``type &lt;Animal&gt;``</span>
+<span class="sd">        **Returns** </span>
+<span class="sd">                :otroEspecimen, type &lt;:class:`Animal`&gt;</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
-<span class="sd">			:animal_hunter, ``type &lt;Animal&gt;``</span>
+	<span class="n">otroEspecimen</span> <span class="o">=</span> <span class="kc">None</span>
+	<span class="k">if</span> <span class="n">animal_victim</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">agresividad</span> <span class="o">==</span> <span class="n">animal_hunter</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">agresividad</span><span class="p">:</span>
+            <span class="n">radio</span> <span class="o">=</span> <span class="n">animal_victim</span><span class="o">.</span><span class="n">perceptionRadio</span>
+	    <span class="n">otroEspecimen</span> <span class="o">=</span> <span class="n">clase_Animal</span><span class="o">.</span><span class="n">Animal</span><span class="p">(</span><span class="n">radio</span><span class="p">,</span><span class="n">animal_hunter</span><span class="o">.</span><span class="n">position</span><span class="p">,</span> <span class="n">animal_hunter</span><span class="o">.</span><span class="n">velocity</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>		
+	<span class="k">else</span><span class="p">:</span>	
 
-<span class="sd">  	&quot;&quot;&quot;</span>
+            <span class="c1">#calculo la distancia entre el objetivo y el cazador </span>
 
-        <span class="k">pass</span></div></div>
+            <span class="n">delta_x</span> <span class="o">=</span> <span class="n">animal_victim</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">animal_hunter</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Distancia en x entre vicitima y cazador</span>
+            <span class="n">delta_y</span> <span class="o">=</span> <span class="n">animal_victim</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">animal_hunter</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># Distancia en y entre vicitima y cazador</span>
+            <span class="n">distancia</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">delta_x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">delta_y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+            <span class="c1">#defino el versor donde apunta la direccion que une ambos objetos</span>
+            <span class="n">r_versor</span> <span class="o">=</span> <span class="p">[</span><span class="n">delta_x</span><span class="p">,</span><span class="n">delta_y</span> <span class="p">]</span> <span class="o">/</span> <span class="n">distancia</span>
+            <span class="n">animal_victim</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">animal_victim</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">r_versor</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">*</span> <span class="n">animal_victim</span><span class="o">.</span><span class="n">velocity</span> 
+            <span class="n">animal_victim</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">animal_victim</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">r_versor</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">*</span> <span class="n">animal_victim</span><span class="o">.</span><span class="n">velocity</span> 
+
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mamaaaaaa!!!&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">otroEspecimen</span>                </div>
+        
+
+<div class="viewcode-block" id="Victim.esObjetivo"><a class="viewcode-back" href="../CodigoClase_TypeOfAnimal.html#clase_type.Victim.esObjetivo">[documentos]</a>    <span class="k">def</span> <span class="nf">esObjetivo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">animal</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot; Metodo que permite al animal saber si los animales que tiene en su radio de busqueda son objetivos </span>
+<span class="sd">        dependiendo de la diferencia de agresividad.  </span>
+<span class="sd">        </span>
+<span class="sd">        **Parameters** </span>
+<span class="sd">                :animal, ``type &lt;Animal&gt;``</span>
+<span class="sd">        </span>
+<span class="sd">        **Returns** </span>
+<span class="sd">                :comparacion entre las agresividades, ``type &lt;comparacion&gt;``</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+	<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">agresividad</span> <span class="o">&lt;</span> <span class="n">animal</span><span class="o">.</span><span class="n">agresividad</span></div></div>
     
 
 

@@ -85,6 +85,33 @@
   <div class="section" id="tutorial">
 <h1>Tutorial<a class="headerlink" href="#tutorial" title="Enlazar permanentemente con este título">¶</a></h1>
 <p>En este tutorial te enseñaremos como realizar una simulación en <em>Survival</em></p>
+<a class="reference internal image-reference" href="_images/Survival.jpeg"><img alt="Diagrama de Clases del problema" class="align-center" src="_images/Survival.jpeg" style="width: 550px; height: 350px;" /></a>
+<p>ETAPAS:</p>
+<ol class="arabic">
+<li><p class="first">Para realizar una simulación con <strong>SURVIVAL</strong> se deben definir los siguientes parámtetros:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>Tiempo Limite</strong>:tiempo que dura la simulacion</li>
+<li><strong>Limites</strong>: vector (x, y) que determinan el espacio donde se desarrolla la simulacion</li>
+<li><strong>Cantidad de animales</strong>: numero de animales que se quiere crear en la simulacion</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Una vez determinados los parametros generales de la simulacion, el sistema se encarga de generar los animales (agents) necesarios para poblar el ambiente.</p>
+</li>
+<li><dl class="first docutils">
+<dt>En cada paso del tiempo (<cite>time_step</cite>) se realizan las siguientes acciones:</dt>
+<dd><ul class="first last simple">
+<li>Cada agente detecta su proximo target (<cite>objective</cite>)</li>
+<li>Actua de acuerdo a su objetivo</li>
+<li>Disminuye su tiempo de vida</li>
+<li>Se actualiza el listado de agentes dentro del ambiente</li>
+<li>Se grafica la situacion actual del ambiente</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
 </div>
 
 
