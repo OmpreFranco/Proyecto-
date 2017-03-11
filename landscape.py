@@ -30,7 +30,9 @@ class Ambiente(object):
             self.agents=[]
             if number_of_agents is None:
                 self.number_of_agents=10
-            self.add_agents()
+            self.add_agents(self.number_of_agents)
+        else:
+            self.number_of_agents=len(self.agents)
     def limits(self):
         """
         Este metodo devuelve los valores limites del Ambiente        
@@ -46,6 +48,7 @@ class Ambiente(object):
         """
         self.detect_targets_and_move()
         self.update()
+        self.reproduccion()
         
 
     def detect_targets_and_move(self):
@@ -53,26 +56,26 @@ class Ambiente(object):
         Este metodo llama a :func:'scout' de la clase Animal para cada agente de la lista.
         """
         for agent in self.agents:
-            objetivo = agent.scout(self.agents)
+            agent.scout(self.agents)
         for agent in self.agents:
             agent.move(agent.objetivo,self)
 
         self.left_life()
+        
+    def left_life(self):
+        for agent in self.agents:
+            agent.life-= 5
 
     def update(self):
         """
         Este metodo busca todos los agentes cuya vida es igual a 0 y los elimina de la lista de agentes.
         """
-#        while agent.life == 0 in self.agents: self.agents.remove(agent)
+
         for agent in self.agents:
             if (agent.life <= 0):
                 self.agents.remove(agent)
-
-    def left_life(self):
-        for agent in self.agents:
-            agent.life-= .5
 	
-    def add_agents(self):
+    def add_agents(self,cant):
         """ 
         Este metodo agrega objetos de la clase Animal a la lista agents de la clase ambiente.
         Esta es una forma de agregar agentes al ambiente, puede haber alternativas. En este caso
@@ -83,7 +86,7 @@ class Ambiente(object):
         En vel le pongo el mismo offset y el numero aleatorio lo multiplico por radio_vision asi no
         camina mas distancia de la que ve.
         """
-        for i in range(self.number_of_agents):
+        for i in range(int(cant)):
                 radio_vision=np.random.randint(1,6)#np.random.random(1)+0.01
                 position=[np.random.random(1)*self.lim[0],np.random.random(1)*self.lim[1]]
                 vel=np.random.random(1)*radio_vision+1
@@ -98,7 +101,9 @@ class Ambiente(object):
         ax.set_xlim([0,self.lim[0]])
         ax.set_ylim([0,self.lim[1]])
         
-        ani=FuncAnimation(fig, self.frame_update, frames=range(TiempoLimite), interval=20, blit=True, fargs=[ax])
+       # plt.legend(handles=[data_prey, data_pred])
+        
+        ani=FuncAnimation(fig, self.frame_update, frames=range(TiempoLimite), interval=400, blit=True, fargs=[ax])
         plt.show()
     
     def frame_update(self,frame,ax):
@@ -106,9 +111,6 @@ class Ambiente(object):
 
         xprey, yprey = [], []
         xpred, ypred = [], []
-
-        data_prey, = ax.plot([], [], 'ro', markersize=10.0, animated=True)
-        data_pred, = ax.plot([], [], 'b+', markersize=10.0, animated=True)
 
         for agent in range(len(self.agents)):
             if (self.agents[agent].agresividad == 1):
@@ -118,12 +120,18 @@ class Ambiente(object):
                 xprey.append(self.agents[agent].position[0])
                 yprey.append(self.agents[agent].position[1])
         
+        data_prey, = ax.plot([], [], 'ro', markersize=10.0, label=str(len(xprey))+' gacelas', animated=True)
+        data_pred, = ax.plot([], [], 'b*', markersize=10.0, label=str(len(xpred))+' simbas', animated=True)
+
         data_prey.set_data(xprey,yprey)
         data_pred.set_data(xpred,ypred)
         
         return [data_prey, data_pred,]
     
-
+    def reproduccion(self):
+        if len(self.agents)<self.number_of_agents/2:
+            self.add_agents(self.number_of_agents/4)
+            print('Se reproducen!')
         
         
         

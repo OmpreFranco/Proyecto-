@@ -29,8 +29,8 @@ class Animal():
         self.life = life
         self.agresividad = agresividad    #Creo que esto ya no iria
         tipo = clase_type.TypeOfAnimal(agresividad)
-        self.type = tipo.getType(agresividad)  
-        self.objetivo = 0
+        self.typeofanimal = tipo.getType(agresividad)  
+        self.objetivo = None
 
     # Metodo de clase para establecer la posicion 
     def return_Position(self):
@@ -61,28 +61,30 @@ class Animal():
         **Parameters** 
 		:objective, type <:class:`Animal`>: el animal se mueve en relacion al objetivo que posee
 
-        """   
+        """
+        
+        self.objetivo=objetivo
+
         if self.objetivo != None:
-            otroEspecimen = self.type.actuar(self, self.objetivo)
-            if type(otroEspecimen) == type(self):	
-            #Ambiente.agents.append(otroEspecimen)
-                print("Nacio un animal!")		
-            else:
-                #Movete aleatoriamente
-                print("nada por aqui")
-            # if (self.agresividad==1):
+            
+            self.typeofanimal.actuar(self,self.objetivo,Ambiente)
+            
+        #Movete aleatoriamente
+        else:
+            print("nada por aqui")
             lim_animal = landscape.Ambiente.limits(Ambiente)
             a = np.random.random(1)*2*np.pi # Genero el angulo aleatorio 
             self.position[0] = self.position[0] + np.cos(a)*self.velocity # Marco el cambio de posicion en X e Y 
             self.position[1] = self.position[1] + np.sin(a)*self.velocity
+
             if self.position[0]<0:
                 self.position[0] = 0
             if self.position[0] > lim_animal[0]:
                 self.position[0] = lim_animal[0]
             if self.position[1]<0:
-               self.position[1] = 0
+                self.position[1] = 0
             if self.position[1] > lim_animal[1]:
-               self.position[1] = lim_animal[1]
+                self.position[1] = lim_animal[1]
 
 
     #  Metodo para hacer que el animal sense su entorno    
@@ -104,17 +106,9 @@ class Animal():
         for i in agentes:
             pos_agent = i.return_Position()
             distancia = np.sqrt((pos_agent[0]-self.position[0])**2 + (pos_agent[1]-self.position[1])**2)
-            if distancia <= self.perceptionRadio and distancia != 0 and minDistance > distancia :#and self.type.esObjetivo(i):
+            if distancia <= self.perceptionRadio and distancia != 0 and minDistance > distancia and self.typeofanimal.esObjetivo(i):
                 minDistance = distancia
                 self.objetivo = i 
                 print("detecte algo")       #Tenemos que ver que hace cuando detecto algo 
             # Aca mi animal no detecta nada  
         return self.objetivo
-        
-                 
-            
-      
-                        
-            
-            
-
